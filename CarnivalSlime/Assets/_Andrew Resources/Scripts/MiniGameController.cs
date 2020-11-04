@@ -8,11 +8,20 @@ public class MiniGameController : MonoBehaviour
 
     public List<string> testingDictionary;
 
+    public string TempOverride;
+
     // Start is called before the first frame update
     void Start()
     {
         Validator = GetComponent<MinigameValidator>();
-        Validator.SwitchGame("type it tangent", testingDictionary[Random.Range(0,testingDictionary.Count)]);
+        if (TempOverride == "")
+        {
+            Validator.SwitchGame("type it tangent", testingDictionary[Random.Range(0, testingDictionary.Count)]);
+        }
+        else
+        {
+            Validator.SwitchGame(TempOverride, testingDictionary[Random.Range(0, testingDictionary.Count)]);
+        }
     }
 
     // Update is called once per frame

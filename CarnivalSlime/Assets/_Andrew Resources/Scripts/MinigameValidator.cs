@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MinigameValidator : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class MinigameValidator : MonoBehaviour
 
     //tangent
     public int currentOccupiedKey;
+    //temp text representation
+    public TextMeshPro validTMP;
+    public TextMeshPro activeTMP;
 
     void Awake()
     {
@@ -62,6 +66,8 @@ public class MinigameValidator : MonoBehaviour
         {
             //SwitchGame("type it", controller.testingDictionary[Random.Range(0, controller.testingDictionary.Count)]);
         }
+        validTMP.text = validString;
+        activeTMP.text = activeString;
     }
 
     void TypeItTangent()
@@ -78,7 +84,6 @@ public class MinigameValidator : MonoBehaviour
 
                     if (stageBoard.isKeyTangent(currentOccupiedKey, inputID) && Input.GetKey(vKey))
                     {
-                        Debug.Log("TANGENT PRESSED");
                         currentOccupiedKey = inputID;
                         GameObject.Find("TEST MARKER").GetComponent<TestMarkerScript>().assignPos(stageBoard.keySprites[currentOccupiedKey].transform.position);
                     }
@@ -86,6 +91,28 @@ public class MinigameValidator : MonoBehaviour
 
             }
         }
+
+        if (Input.anyKeyDown)
+        {
+            if (stageBoard.alphabet[currentOccupiedKey] == validString[activeStringIndex].ToString())
+            {
+                Debug.Log(stageBoard.alphabet[currentOccupiedKey]);
+                activeString += stageBoard.alphabet[currentOccupiedKey];
+                activeStringIndex++;
+            }
+            if (activeStringIndex>=validString.Length)
+            {
+                activeString = "";
+                string prevString = validString;
+                //TEMP RESET
+                while (validString == prevString)
+                {
+                    validString = controller.testingDictionary[Random.Range(0, controller.testingDictionary.Count)];
+                }
+                activeStringIndex = 0;
+            }
+        }
+
     }
 
     void GameTypeIt()
@@ -97,11 +124,25 @@ public class MinigameValidator : MonoBehaviour
             // for example, we can ask the player to spell out a word, but they have to approach each letter by touching a tangent letter (referencing the last key pressed variable).   
             if (stageBoard.keyBools[currentID]) 
             {
+                GameObject.Find("TEST MARKER").GetComponent<TestMarkerScript>().assignPos(stageBoard.keySprites[currentID].transform.position);
                 activeString += validString[activeStringIndex];
                 activeStringIndex += 1;
             }
         }
 
-        minigameWon = activeStringIndex >= validString.Length;       
+        minigameWon = activeStringIndex >= validString.Length;
+
+        //temp reset
+        if (minigameWon)
+        {
+            activeString = "";
+            activeStringIndex = 0;
+            string prevString = validString;
+            //TEMP RESET
+            while (validString == prevString)
+            {
+                validString = controller.testingDictionary[Random.Range(0, controller.testingDictionary.Count)];
+            }
+        }
     }
 }
