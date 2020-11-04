@@ -15,7 +15,7 @@ public class TestMarkerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, positionToMove, Time.deltaTime * 10);
+        transform.position = Vector3.Lerp(transform.position, positionToMove, Time.deltaTime * 20);
     }
 
     public void assignPos(Vector3 pos)
