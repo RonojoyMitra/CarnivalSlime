@@ -57,6 +57,9 @@ public class IrregularTypingText : MonoBehaviour
     public bool stun;
     private IEnumerator stunCoroutine;
 
+    // the number of rounds that have been completed
+    public int rounds;
+
     void Start()
     {
         randomLine = Random.Range(0, 12);
@@ -65,6 +68,9 @@ public class IrregularTypingText : MonoBehaviour
         leftToRight = true;
         tracker = 0;
         playerInput.text = "";
+        rounds = 0;
+
+        // this is just setting all of the keyboards in a list according to the direction they are in on the keyboard
         keyboardAlphabetNumbers.Add("Q", 0);
         keyboardAlphabetNumbers.Add("A", 1);
         keyboardAlphabetNumbers.Add("Z", 2);
@@ -93,9 +99,9 @@ public class IrregularTypingText : MonoBehaviour
         keyboardAlphabetNumbers.Add("P", 25);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // this is just the starting scene to start the minigame
         if (phase == 0)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -105,6 +111,7 @@ public class IrregularTypingText : MonoBehaviour
                 timer.startTicking = true;
             }
         }
+        // this is an unseen phase that gets the audience comments ready
         else if (phase == 1)
         {
             string sourceLine = textLines[randomLine];
@@ -125,8 +132,10 @@ public class IrregularTypingText : MonoBehaviour
 
             phase = 2;
         }
-        else
+        // this phase is the actual gameplay!
+        else if (phase == 2)
         {
+            // if the player enters a key
             if (Input.anyKeyDown)
             {
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))) // for each virtual key
@@ -136,15 +145,17 @@ public class IrregularTypingText : MonoBehaviour
 
                     if (Input.GetKeyDown(vKey) && inputID < stageBoard.keyBools.Count && inputID >= 0) //if its a valid input (can be expanded upon)
                     {
+                        // if the player enters a correct key (and is able to because the slime isn't stunned)
                         if (inputString == sortedArray[tracker] && !stun)
                         {
                             tracker++;
                             playerInput.text += inputString.ToUpper();
                             slime.assignPos(stageBoard.keySprites[inputID].transform.position);
                         }
+
+                        // if the player enters an incorrect key
                         else
                         {
-                            Debug.Log("STUN");
                             stun = true;
                             stunCoroutine = Stun();
                             StartCoroutine(stunCoroutine);
@@ -152,6 +163,8 @@ public class IrregularTypingText : MonoBehaviour
                     }
                 }
             }
+
+            // if player correctly types out the word, then reset
             if (tracker == letterCount && Vector3.Distance(slime.gameObject.transform.position, stageBoard.keySprites[stageBoard.alphabet.IndexOf(sortedArray[letterCount-1])].transform.position) <= 1)
             {
                 if (leftToRight)
@@ -169,7 +182,19 @@ public class IrregularTypingText : MonoBehaviour
                 phase = 1;
                 playerInput.text = "";
                 timer.Reset();
+                rounds++;
+                // if 6 rounds have been completed, go to phase 3
+                if (rounds == 6)
+                {
+                    timer.startTicking = false;
+                    timer.timerText.text = "";
+                    audienceSentence.text = "You have successfully completed the minigame!";
+                    playerInput.text = "Great job!";
+                    phase = 3;
+                }
             }
+
+            // if the player runs out of time
             if (timer.timerDisplay == 0)
             {
                 if (leftToRight)
@@ -186,6 +211,12 @@ public class IrregularTypingText : MonoBehaviour
                 playerInput.text = "";
                 timer.Reset();
             }
+        }
+
+        // this last phase is for when the minigame ends (player completes all rounds)
+        else if (phase == 3)
+        {
+            slime.assignPos(new Vector3(0, 0, 0));
         }
     }
 
