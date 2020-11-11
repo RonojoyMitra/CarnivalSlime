@@ -53,6 +53,10 @@ public class IrregularTypingText : MonoBehaviour
     //int variable that just tracks how many letters have been corrected inputted already
     public int tracker;
 
+    //this bool is true when the player makes a mistake and must wait for a stun animation to end
+    public bool stun;
+    private IEnumerator stunCoroutine;
+
     void Start()
     {
         randomLine = Random.Range(0, 12);
@@ -132,7 +136,7 @@ public class IrregularTypingText : MonoBehaviour
 
                     if (Input.GetKeyDown(vKey) && inputID < stageBoard.keyBools.Count && inputID >= 0) //if its a valid input (can be expanded upon)
                     {
-                        if (inputString == sortedArray[tracker])
+                        if (inputString == sortedArray[tracker] && !stun)
                         {
                             tracker++;
                             playerInput.text += inputString.ToUpper();
@@ -141,6 +145,9 @@ public class IrregularTypingText : MonoBehaviour
                         else
                         {
                             Debug.Log("STUN");
+                            stun = true;
+                            stunCoroutine = Stun();
+                            StartCoroutine(stunCoroutine);
                         }
                     }
                 }
@@ -155,9 +162,26 @@ public class IrregularTypingText : MonoBehaviour
                 {
                     slime.assignPos(leftStartPosition);
                 }
+                stun = false;
                 leftToRight = !leftToRight;
                 tracker = 0;
                 randomLine = Random.Range(0, 12);
+                phase = 1;
+                playerInput.text = "";
+                timer.Reset();
+            }
+            if (timer.timerDisplay == 0)
+            {
+                if (leftToRight)
+                {
+                    slime.assignPos(leftStartPosition);
+                }
+                else
+                {
+                    slime.assignPos(rightStartPosition);
+                }
+                stun = false;
+                tracker = 0;
                 phase = 1;
                 playerInput.text = "";
                 timer.Reset();
@@ -215,5 +239,11 @@ public class IrregularTypingText : MonoBehaviour
             answers[i] = highestCharacter;
         }
         return answers;
+    }
+
+    private IEnumerator Stun()
+    {
+        yield return new WaitForSeconds(2f);
+        stun = false;
     }
 }
