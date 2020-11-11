@@ -6,6 +6,7 @@ using TMPro;
 public class IrregularTypingText : MonoBehaviour
 {
     public KeyboardSystem stageBoard;
+    public IrregularTimeManagement timer;
 
     // starting (offscreen) positions for the slime at the beginning of the trick
     public Vector3 leftStartPosition;
@@ -57,7 +58,6 @@ public class IrregularTypingText : MonoBehaviour
         randomLine = Random.Range(0, 12);
         textLines = new List<string>(sentenceBank.text.Split('\n'));
         phase = 0;
-        slime.assignPos(leftStartPosition);
         leftToRight = true;
         tracker = 0;
         playerInput.text = "";
@@ -94,6 +94,15 @@ public class IrregularTypingText : MonoBehaviour
     {
         if (phase == 0)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                phase = 1;
+                slime.assignPos(leftStartPosition);
+                timer.startTicking = true;
+            }
+        }
+        else if (phase == 1)
+        {
             string sourceLine = textLines[randomLine];
             int wordIndex = int.Parse(sourceLine.Substring(0, 3));
             string frontSentence = sourceLine.Substring(3, wordIndex);
@@ -110,7 +119,7 @@ public class IrregularTypingText : MonoBehaviour
                 sortedArray = SelectionSortRightToLeft(boldWord);
             }
 
-            phase = 1;
+            phase = 2;
         }
         else
         {
@@ -149,8 +158,9 @@ public class IrregularTypingText : MonoBehaviour
                 leftToRight = !leftToRight;
                 tracker = 0;
                 randomLine = Random.Range(0, 12);
-                phase = 0;
+                phase = 1;
                 playerInput.text = "";
+                timer.Reset();
             }
         }
     }
