@@ -5,6 +5,8 @@ using TMPro;
 
 public class IrregularTypingText : MonoBehaviour
 {
+    public int day;
+
     public KeyboardSystem stageBoard;
     public IrregularTimeManagement timer;
 
@@ -22,6 +24,11 @@ public class IrregularTypingText : MonoBehaviour
     //         line starts with an index number that states which character the nth letter word starts in the sentence
     //         then, there is a space between the number and the rest of the sentence
     public TextAsset sentenceBank;
+    public TextAsset sentenceBank4;
+    public TextAsset sentenceBank5;
+    public TextAsset sentenceBank6;
+    public TextAsset sentenceBank7;
+    public TextAsset sentenceBank8;
 
     //int that stores which random line to select from sentenceBank
     public int randomLine;
@@ -63,6 +70,31 @@ public class IrregularTypingText : MonoBehaviour
     void Start()
     {
         randomLine = Random.Range(0, 12);
+        if (day == 0 || day == 1)
+        {
+            letterCount = 4;
+            sentenceBank = sentenceBank4;
+        }
+        else if (day == 2)
+        {
+            letterCount = 5;
+            sentenceBank = sentenceBank5;
+        }
+        else if (day == 3)
+        {
+            letterCount = 6;
+            sentenceBank = sentenceBank6;
+        }
+        else if (day == 4)
+        {
+            letterCount = 7;
+            sentenceBank = sentenceBank7;
+        }
+        else if (day == 5)
+        {
+            letterCount = 8;
+            sentenceBank = sentenceBank8;
+        }
         textLines = new List<string>(sentenceBank.text.Split('\n'));
         phase = 0;
         leftToRight = true;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestMarkerScript : MonoBehaviour
 {
-    Vector3 positionToMove;
+    public Vector3 positionToMove;
 
     // Start is called before the first frame update
     void Start()
