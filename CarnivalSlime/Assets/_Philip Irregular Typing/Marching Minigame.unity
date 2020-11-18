@@ -1628,6 +1628,7 @@ MonoBehaviour:
   slimeTracker: 0
   removedLetterIndex: 0
   phase: 0
+  countingDown: 0
 --- !u!114 &564942207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4743,7 +4744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ACTIVE WORD
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a1db175c3251b044905afc0025745e4, type: 2}
   m_sharedMaterial: {fileID: -9001201174131459986, guid: 8a1db175c3251b044905afc0025745e4,

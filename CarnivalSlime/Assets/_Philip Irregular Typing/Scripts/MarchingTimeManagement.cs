@@ -26,27 +26,27 @@ public class MarchingTimeManagement : MonoBehaviour
         if (day == 0 || day == 1)
         {
             timerLevelDisplay = 3;
-            timerText.text = "" + 3;
+            //timerText.text = "" + 3;
         }
         else if (day == 2)
         {
             timerLevelDisplay = 5;
-            timerText.text = "" + 5;
+            //timerText.text = "" + 5;
         }
         else if (day == 3)
         {
             timerLevelDisplay = 7;
-            timerText.text = "" + 7;
+            //timerText.text = "" + 7;
         }
         else if (day == 4)
         {
             timerLevelDisplay = 9;
-            timerText.text = "" + 9;
+            //timerText.text = "" + 9;
         }
         else if (day == 5)
         {
             timerLevelDisplay = 11;
-            timerText.text = "" + 11;
+            //timerText.text = "" + 11;
         }
         timerDisplay = timerLevelDisplay;
         startTicking = false;
@@ -74,6 +74,5 @@ public class MarchingTimeManagement : MonoBehaviour
     {
         timerFloat = 0f;
         timerDisplay = timerLevelDisplay;
-        timerText.text = "" + timerDisplay;
     }
 }

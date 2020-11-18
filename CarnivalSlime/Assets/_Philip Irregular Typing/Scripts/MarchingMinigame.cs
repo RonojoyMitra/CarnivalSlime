@@ -36,8 +36,13 @@ public class MarchingMinigame : MonoBehaviour
     public int tracker;
     public int slimeTracker;
     public int removedLetterIndex;
+    public bool ranOutOfTime;
+    public int randoLetter;
 
     public int phase;
+
+    public IEnumerator countDownCoroutine;
+    public bool countingDown;
 
     // Start is called before the first frame update
     void Start()
@@ -163,32 +168,38 @@ public class MarchingMinigame : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                phase = 1;
-                timer.startTicking = true;
+                //phase = 1;
+                countDownCoroutine = CountDown();
+                StartCoroutine(countDownCoroutine);
+                //timer.startTicking = true;
             }
         }
         // unseen phase that just selects a random letter 
         if (phase == 1)
         {
-            if (queueLetters.Count >= numberOfSlimes)
+            if (!ranOutOfTime)
             {
-                removedLetterIndex = stageBoard.alphabet.IndexOf(queueLetters[0]);
-                queueLetters.RemoveAt(0);
-            }
-            int randoLetter = Random.Range(0, 26);
-            while (queueLetters.Contains(stageBoard.alphabet[randoLetter]) || removedLetterIndex == randoLetter)
-            {
+                if (queueLetters.Count >= numberOfSlimes)
+                {
+                    removedLetterIndex = stageBoard.alphabet.IndexOf(queueLetters[0]);
+                    queueLetters.RemoveAt(0);
+                }
                 randoLetter = Random.Range(0, 26);
+                while (queueLetters.Contains(stageBoard.alphabet[randoLetter]) || removedLetterIndex == randoLetter)
+                {
+                    randoLetter = Random.Range(0, 26);
+                }
+                queueLetters.Add(stageBoard.alphabet[randoLetter]);
+                tracker = queueLetters.Count - 1;
             }
-            audienceSentence.text = "" + stageBoard.alphabet[randoLetter];
-            queueLetters.Add(stageBoard.alphabet[randoLetter]);
+            audienceSentence.text = "<color=red>" + stageBoard.alphabet[randoLetter] + "</color>";
             playerInput.text = "";
-            tracker = queueLetters.Count-1;
             slimeTracker = 0;
             phase = 2;
+            ranOutOfTime = false;
         }
         // this phase is the core gameplay stage but only when SOME slimes are on stage
-        else if (phase == 2)
+        else if (phase == 2 && !countingDown)
         {
             // if the player correctly types in all of the letters
             if (tracker == -1)
@@ -209,7 +220,8 @@ public class MarchingMinigame : MonoBehaviour
                 currentRound++;
                 if (currentRound < totalRounds)
                 {
-                    phase = 1;
+                    countDownCoroutine = CountDown();
+                    StartCoroutine(countDownCoroutine);
                 }
                 else
                 {
@@ -246,12 +258,17 @@ public class MarchingMinigame : MonoBehaviour
             }
             if (timer.timerDisplay <= 0)
             {
+                ranOutOfTime = true;
                 GoBack();
                 timer.Reset();
+                countDownCoroutine = CountDown();
+                StartCoroutine(countDownCoroutine);
             }
         }
         else if (phase == 3)
         {
+            timer.startTicking = false;
+            timer.timerText.text = "";
             audienceSentence.text = "Great job!";
             playerInput.text = "You have successfully completed the minigame!";
         }
@@ -266,5 +283,23 @@ public class MarchingMinigame : MonoBehaviour
         playerInput.text = "";
         tracker = queueLetters.Count - 1;
         slimeTracker = 0;
+    }
+
+    private IEnumerator CountDown()
+    {
+        timer.Reset();
+        timer.timerText.text = "";
+        timer.startTicking = false;
+        countingDown = true;
+        audienceSentence.text = "3";
+        yield return new WaitForSeconds(1f);
+        audienceSentence.text = "2";
+        yield return new WaitForSeconds(1f);
+        audienceSentence.text = "1";
+        yield return new WaitForSeconds(1f);
+        phase = 1;
+        timer.startTicking = true;
+        timer.timerText.text = "" + timer.timerLevelDisplay;
+        countingDown = false;
     }
 }
