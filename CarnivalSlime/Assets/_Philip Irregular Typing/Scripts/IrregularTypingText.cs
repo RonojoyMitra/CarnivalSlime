@@ -191,6 +191,7 @@ public class IrregularTypingText : MonoBehaviour
                             stun = true;
                             stunCoroutine = Stun();
                             StartCoroutine(stunCoroutine);
+                            GameManager.Instance.SubtractScore(Random.Range(0.25f, 0.75f));
                         }
                     }
                 }
@@ -207,6 +208,7 @@ public class IrregularTypingText : MonoBehaviour
                 {
                     slime.assignPos(leftStartPosition);
                 }
+                GameManager.Instance.AddScore(Random.Range(1f, 1.5f));
                 stun = false;
                 leftToRight = !leftToRight;
                 tracker = 0;
@@ -242,6 +244,7 @@ public class IrregularTypingText : MonoBehaviour
                 phase = 1;
                 playerInput.text = "";
                 timer.Reset();
+                GameManager.Instance.SubtractScore(Random.Range(1f, 3f));
             }
         }
 

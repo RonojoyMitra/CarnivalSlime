@@ -227,6 +227,7 @@ public class MarchingMinigame : MonoBehaviour
                 {
                     phase = 3;
                 }
+                GameManager.Instance.AddScore(Random.Range(0.5f, 1f));
                 timer.Reset();
             }
             // if the player enters a key
@@ -251,6 +252,7 @@ public class MarchingMinigame : MonoBehaviour
                         // if the player enters an incorrect key
                         else
                         {
+                            GameManager.Instance.SubtractScore(Random.Range(0.25f, 1f));
                             GoBack();
                         }
                     }
@@ -258,6 +260,7 @@ public class MarchingMinigame : MonoBehaviour
             }
             if (timer.timerDisplay <= 0)
             {
+                GameManager.Instance.SubtractScore(Random.Range(0.5f, 1f));
                 ranOutOfTime = true;
                 GoBack();
                 timer.Reset();
