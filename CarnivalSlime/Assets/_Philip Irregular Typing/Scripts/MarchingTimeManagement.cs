@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class IrregularTimeManagement : MonoBehaviour
+public class MarchingTimeManagement : MonoBehaviour
 {
     public TextMeshPro timerText;
 
@@ -21,26 +21,32 @@ public class IrregularTimeManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        day = 0;
         timerFloat = 0f;
         if (day == 0 || day == 1)
         {
-            timerLevelDisplay = 6;
+            timerLevelDisplay = 3;
+            timerText.text = "" + 3;
         }
         else if (day == 2)
         {
-            timerLevelDisplay = 10;
+            timerLevelDisplay = 5;
+            timerText.text = "" + 5;
         }
         else if (day == 3)
         {
-            timerLevelDisplay = 14;
+            timerLevelDisplay = 7;
+            timerText.text = "" + 7;
         }
         else if (day == 4)
         {
-            timerLevelDisplay = 18;
+            timerLevelDisplay = 9;
+            timerText.text = "" + 9;
         }
         else if (day == 5)
         {
-            timerLevelDisplay = 22;
+            timerLevelDisplay = 11;
+            timerText.text = "" + 11;
         }
         timerDisplay = timerLevelDisplay;
         startTicking = false;

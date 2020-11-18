@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 170666625}
   - component: {fileID: 170666624}
   m_Layer: 0
-  m_Name: TEST MARKER
+  m_Name: SLIME1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -316,6 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e9e18ab9649ed4a89f7daff08aa370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionToMove: {x: 0, y: 0, z: 0}
 --- !u!23 &170666625
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -375,7 +376,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &198559184
 GameObject:
@@ -516,7 +517,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a1db175c3251b044905afc0025745e4, type: 2}
   m_sharedMaterial: {fileID: -9001201174131459986, guid: 8a1db175c3251b044905afc0025745e4,
@@ -1602,8 +1603,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   day: 0
   totalRounds: 0
+  currentRound: 0
   numberOfSlimes: 0
   stageBoard: {fileID: 564942207}
+  timer: {fileID: 1591502569}
   slime1: {fileID: 170666624}
   slime2: {fileID: 1720608066}
   slime3: {fileID: 705653086}
@@ -1619,11 +1622,11 @@ MonoBehaviour:
   playerInput: {fileID: 1240645507}
   queueLetters: []
   slimes: []
-  waitingPositions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  previousPositions: []
+  maxLengthLetters: 0
+  tracker: 0
+  slimeTracker: 0
+  removedLetterIndex: 0
   phase: 0
 --- !u!114 &564942207
 MonoBehaviour:
@@ -2659,7 +2662,7 @@ GameObject:
   - component: {fileID: 705653087}
   - component: {fileID: 705653086}
   m_Layer: 0
-  m_Name: TEST MARKER (2)
+  m_Name: SLIME3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2677,6 +2680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e9e18ab9649ed4a89f7daff08aa370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionToMove: {x: 0, y: 0, z: 0}
 --- !u!23 &705653087
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2736,7 +2740,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &740296609
 GameObject:
@@ -4077,7 +4081,7 @@ GameObject:
   - component: {fileID: 1155986613}
   - component: {fileID: 1155986612}
   m_Layer: 0
-  m_Name: TEST MARKER (4)
+  m_Name: SLIME4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4095,6 +4099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e9e18ab9649ed4a89f7daff08aa370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionToMove: {x: 0, y: 0, z: 0}
 --- !u!23 &1155986613
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4154,7 +4159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1164863712
 GameObject:
@@ -4169,7 +4174,7 @@ GameObject:
   - component: {fileID: 1164863714}
   - component: {fileID: 1164863713}
   m_Layer: 0
-  m_Name: TEST MARKER (5)
+  m_Name: SLIME5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4187,6 +4192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e9e18ab9649ed4a89f7daff08aa370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionToMove: {x: 0, y: 0, z: 0}
 --- !u!23 &1164863714
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4246,7 +4252,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1169702504
 GameObject:
@@ -4680,54 +4686,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1216502721
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1216502723}
-  - component: {fileID: 1216502722}
-  m_Layer: 0
-  m_Name: TimeManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1216502722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216502721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9baa1fb64ac64cc7a002e874761d90a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 222243460}
-  timerFloat: 0
-  timerLevelDisplay: 0
-  timerDisplay: 0
-  startTicking: 0
---- !u!4 &1216502723
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216502721}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.26250076, y: 0.501, z: -0.3499999}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1240645505
 GameObject:
   m_ObjectHideFlags: 0
@@ -6254,6 +6212,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1591502567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1591502568}
+  - component: {fileID: 1591502569}
+  m_Layer: 0
+  m_Name: TimerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1591502568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591502567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.18250084, y: 0.501, z: -0.3499999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1591502569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591502567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3403ce1c70b42487e896c5d10cd4b422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 222243460}
+  day: 0
+  timerFloat: 0
+  timerLevelDisplay: 0
+  timerDisplay: 0
+  startTicking: 0
 --- !u!1 &1598962554
 GameObject:
   m_ObjectHideFlags: 0
@@ -7095,7 +7102,7 @@ GameObject:
   - component: {fileID: 1720608067}
   - component: {fileID: 1720608066}
   m_Layer: 0
-  m_Name: TEST MARKER (1)
+  m_Name: SLIME2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7113,6 +7120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e9e18ab9649ed4a89f7daff08aa370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionToMove: {x: 0, y: 0, z: 0}
 --- !u!23 &1720608067
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7172,7 +7180,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1750015886
 GameObject:
@@ -7187,7 +7195,7 @@ GameObject:
   - component: {fileID: 1750015888}
   - component: {fileID: 1750015887}
   m_Layer: 0
-  m_Name: TEST MARKER (3)
+  m_Name: SLIME4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7205,6 +7213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e9e18ab9649ed4a89f7daff08aa370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionToMove: {x: 0, y: 0, z: 0}
 --- !u!23 &1750015888
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7264,7 +7273,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1760807694
 GameObject:
@@ -7722,7 +7731,7 @@ GameObject:
   - component: {fileID: 1864610019}
   - component: {fileID: 1864610018}
   m_Layer: 0
-  m_Name: TEST MARKER (6)
+  m_Name: SLIME6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7740,6 +7749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e9e18ab9649ed4a89f7daff08aa370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionToMove: {x: 0, y: 0, z: 0}
 --- !u!23 &1864610019
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7799,7 +7809,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1964048270
 GameObject:

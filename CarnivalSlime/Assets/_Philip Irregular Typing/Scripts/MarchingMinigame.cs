@@ -11,6 +11,7 @@ public class MarchingMinigame : MonoBehaviour
     public int numberOfSlimes;
 
     public KeyboardSystem stageBoard;
+    public MarchingTimeManagement timer;
 
     public TestMarkerScript slime1;
     public TestMarkerScript slime2;
@@ -34,15 +35,16 @@ public class MarchingMinigame : MonoBehaviour
     public int maxLengthLetters;
     public int tracker;
     public int slimeTracker;
+    public int removedLetterIndex;
 
     public int phase;
 
     // Start is called before the first frame update
     void Start()
     {
-        day = 3;
+        day = 0;
         maxLengthLetters = 1;
-        phase = 1;
+        phase = 0;
 
         // setting the basic slime stuff that all days share
         slime1.gameObject.SetActive(true);
@@ -151,26 +153,35 @@ public class MarchingMinigame : MonoBehaviour
             previousPositions[5] = waitPosition4;
             previousPositions[6] = waitPosition4;
         }
-        currentRound = totalRounds;
+        currentRound = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (phase == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                phase = 1;
+                timer.startTicking = true;
+            }
+        }
         // unseen phase that just selects a random letter 
         if (phase == 1)
         {
+            if (queueLetters.Count >= numberOfSlimes)
+            {
+                removedLetterIndex = stageBoard.alphabet.IndexOf(queueLetters[0]);
+                queueLetters.RemoveAt(0);
+            }
             int randoLetter = Random.Range(0, 26);
-            while (queueLetters.Contains(stageBoard.alphabet[randoLetter]))
+            while (queueLetters.Contains(stageBoard.alphabet[randoLetter]) || removedLetterIndex == randoLetter)
             {
                 randoLetter = Random.Range(0, 26);
             }
             audienceSentence.text = "" + stageBoard.alphabet[randoLetter];
             queueLetters.Add(stageBoard.alphabet[randoLetter]);
-            if (queueLetters.Count > numberOfSlimes)
-            {
-                queueLetters.RemoveAt(0);
-            }
             playerInput.text = "";
             tracker = queueLetters.Count-1;
             slimeTracker = 0;
@@ -195,7 +206,16 @@ public class MarchingMinigame : MonoBehaviour
                 {
                     previousPositions[i] = slimes[i].positionToMove;
                 }
-                phase = 1;
+                currentRound++;
+                if (currentRound < totalRounds)
+                {
+                    phase = 1;
+                }
+                else
+                {
+                    phase = 3;
+                }
+                timer.Reset();
             }
             // if the player enters a key
             if (Input.anyKeyDown && tracker != -1)
@@ -219,14 +239,21 @@ public class MarchingMinigame : MonoBehaviour
                         // if the player enters an incorrect key
                         else
                         {
-                            /*stun = true;
-                            stunCoroutine = Stun();
-                            StartCoroutine(stunCoroutine);*/
                             GoBack();
                         }
                     }
                 }
             }
+            if (timer.timerDisplay <= 0)
+            {
+                GoBack();
+                timer.Reset();
+            }
+        }
+        else if (phase == 3)
+        {
+            audienceSentence.text = "Great job!";
+            playerInput.text = "You have successfully completed the minigame!";
         }
     }
 
