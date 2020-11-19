@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class IrregularTypingText : MonoBehaviour
 {
@@ -64,11 +65,14 @@ public class IrregularTypingText : MonoBehaviour
     public bool stun;
     private IEnumerator stunCoroutine;
 
+    private IEnumerator loadNextScene;
+
     // the number of rounds that have been completed
     public int rounds;
 
     void Start()
     {
+        day = GameManager.Instance.day;
         randomLine = Random.Range(0, 12);
         if (day == 0 || day == 1)
         {
@@ -188,10 +192,13 @@ public class IrregularTypingText : MonoBehaviour
                         // if the player enters an incorrect key
                         else
                         {
+                            if (!stun)
+                            {
+                                GameManager.Instance.SubtractScore(Random.Range(0.25f, 0.75f));
+                            }
                             stun = true;
                             stunCoroutine = Stun();
                             StartCoroutine(stunCoroutine);
-                            GameManager.Instance.SubtractScore(Random.Range(0.25f, 0.75f));
                         }
                     }
                 }
@@ -252,6 +259,9 @@ public class IrregularTypingText : MonoBehaviour
         else if (phase == 3)
         {
             slime.assignPos(new Vector3(0, 0, 0));
+            loadNextScene = LoadScene();
+            StartCoroutine(loadNextScene);
+            phase = 4;
         }
     }
 
@@ -311,5 +321,11 @@ public class IrregularTypingText : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         stun = false;
+    }
+
+    private IEnumerator LoadScene()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Marching Minigame", LoadSceneMode.Single);
     }
 }

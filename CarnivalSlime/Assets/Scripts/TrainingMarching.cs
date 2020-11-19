@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class MarchingMinigame : MonoBehaviour
+public class TrainingMarching : MonoBehaviour
 {
     public int day;
     public int totalRounds;
@@ -14,18 +14,31 @@ public class MarchingMinigame : MonoBehaviour
     public KeyboardSystem stageBoard;
     public MarchingTimeManagement timer;
 
+    // tutorial exclusives
+    public TextAsset textFile;
+    public List<string> dialgueLines;
+    public int currentLine;
+    public int endLine;
+
+    public GameObject tutorialSpeech;
+    public TMP_Text tutorialText;
+
+    public Coroutine currentScrollType;
+    public float typeSpeed;       //how fast the scroll works
+    public bool isTyping;       //used for checking if textScroll is happening
+    public bool cancelTyping;   //used to check if player wants to cancel the scroll
+    public bool goText;    //if coroutine is happening
+
+    public bool finishedTalking;
+    // tutorial exclusives
+
     public TestMarkerScript slime1;
     public TestMarkerScript slime2;
     public TestMarkerScript slime3;
-    public TestMarkerScript slime4;
-    public TestMarkerScript slime5;
-    public TestMarkerScript slime6;
-    public TestMarkerScript slime7;
 
     public Vector3 waitPosition1;
     public Vector3 waitPosition2;
     public Vector3 waitPosition3;
-    public Vector3 waitPosition4;
 
     public TextMeshPro audienceSentence; // top tmpro
     public TextMeshPro playerInput; // bottom tmpro--will display the correct letters that the player inputs
@@ -53,7 +66,6 @@ public class MarchingMinigame : MonoBehaviour
         maxLengthLetters = 1;
         phase = 0;
 
-        // setting the basic slime stuff that all days share
         slime1.gameObject.SetActive(true);
         slime2.gameObject.SetActive(true);
         slime3.gameObject.SetActive(true);
@@ -63,115 +75,50 @@ public class MarchingMinigame : MonoBehaviour
         slimes[0].assignPos(waitPosition1);
         slimes[1].assignPos(waitPosition2);
         slimes[2].assignPos(waitPosition3);
-        // ending of the basic slime stuff that all days share
 
-        if (day == 0 || day == 1)
-        {
-            totalRounds = 13;
-            numberOfSlimes = 3;
-            previousPositions = new Vector3[numberOfSlimes];
-            slime4.gameObject.SetActive(false);
-            slime5.gameObject.SetActive(false);
-            slime6.gameObject.SetActive(false);
-            slime7.gameObject.SetActive(false);
-            previousPositions[0] = waitPosition1;
-            previousPositions[1] = waitPosition2;
-            previousPositions[2] = waitPosition3;
-        }
-        else if (day == 2)
-        {
-            totalRounds = 14;
-            numberOfSlimes = 4;
-            previousPositions = new Vector3[numberOfSlimes];
-            slime4.gameObject.SetActive(true);
-            slime5.gameObject.SetActive(false);
-            slime6.gameObject.SetActive(false);
-            slime7.gameObject.SetActive(false);
-            slimes.Add(slime4);
-            slimes[3].assignPos(waitPosition4);
-            previousPositions[0] = waitPosition1;
-            previousPositions[1] = waitPosition2;
-            previousPositions[2] = waitPosition3;
-            previousPositions[3] = waitPosition4;
-        }
-        else if (day == 3)
-        {
-            totalRounds = 15;
-            numberOfSlimes = 5;
-            previousPositions = new Vector3[numberOfSlimes];
-            slime4.gameObject.SetActive(true);
-            slime5.gameObject.SetActive(true);
-            slime6.gameObject.SetActive(false);
-            slime7.gameObject.SetActive(false);
-            slimes.Add(slime4);
-            slimes.Add(slime5);
-            slimes[3].assignPos(waitPosition4);
-            slimes[4].assignPos(waitPosition4);
-            previousPositions[0] = waitPosition1;
-            previousPositions[1] = waitPosition2;
-            previousPositions[2] = waitPosition3;
-            previousPositions[3] = waitPosition4;
-            previousPositions[4] = waitPosition4;
-        }
-        else if (day == 4)
-        {
-            totalRounds = 16;
-            numberOfSlimes = 6;
-            previousPositions = new Vector3[numberOfSlimes];
-            slime4.gameObject.SetActive(true);
-            slime5.gameObject.SetActive(true);
-            slime6.gameObject.SetActive(true);
-            slime7.gameObject.SetActive(false);
-            slimes.Add(slime4);
-            slimes.Add(slime5);
-            slimes.Add(slime6);
-            slimes[3].assignPos(waitPosition4);
-            slimes[4].assignPos(waitPosition4);
-            slimes[5].assignPos(waitPosition4);
-            previousPositions[0] = waitPosition1;
-            previousPositions[1] = waitPosition2;
-            previousPositions[2] = waitPosition3;
-            previousPositions[3] = waitPosition4;
-            previousPositions[4] = waitPosition4;
-            previousPositions[5] = waitPosition4;
-        }
-        else if (day == 5)
-        {
-            totalRounds = 17;
-            numberOfSlimes = 7;
-            previousPositions = new Vector3[numberOfSlimes];
-            slime4.gameObject.SetActive(true);
-            slime5.gameObject.SetActive(true);
-            slime6.gameObject.SetActive(true);
-            slime7.gameObject.SetActive(true);
-            slimes.Add(slime4);
-            slimes.Add(slime5);
-            slimes.Add(slime6);
-            slimes.Add(slime7);
-            slimes[3].assignPos(waitPosition4);
-            slimes[4].assignPos(waitPosition4);
-            slimes[5].assignPos(waitPosition4);
-            slimes[6].assignPos(waitPosition4);
-            previousPositions[0] = waitPosition1;
-            previousPositions[1] = waitPosition2;
-            previousPositions[2] = waitPosition3;
-            previousPositions[3] = waitPosition4;
-            previousPositions[4] = waitPosition4;
-            previousPositions[5] = waitPosition4;
-            previousPositions[6] = waitPosition4;
-        }
+        totalRounds = 13; 
+        numberOfSlimes = 3;
+        previousPositions = new Vector3[numberOfSlimes];
+        previousPositions[0] = waitPosition1;
+        previousPositions[1] = waitPosition2;
+        previousPositions[2] = waitPosition3;
+
         currentRound = 0;
+
+        // tutorial exclusives
+        dialgueLines = new List<string>(textFile.text.Split('\n'));
+        currentLine = 0;
+        tutorialText.text = dialgueLines[currentLine];
+        typeSpeed = 0.03f;
+        isTyping = false;
+        cancelTyping = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (phase == 0)
+        if (phase == 0 && !finishedTalking)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (!goText)
             {
+                Scroll();
+                goText = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && currentLine == endLine && cancelTyping && tutorialText.text == dialgueLines[currentLine])
+            {
+                tutorialSpeech.SetActive(false);
                 countDownCoroutine = CountDown();
                 StartCoroutine(countDownCoroutine);
+                finishedTalking = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.Space) && !cancelTyping)
+            {
+                cancelTyping = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.Space) && cancelTyping)
+            {
+                NextLine();
             }
         }
         // unseen phase that just selects a random letter 
@@ -228,7 +175,6 @@ public class MarchingMinigame : MonoBehaviour
                     phase = 3;
                 }
                 GameManager.Instance.AddScore(Random.Range(0.5f, 1f));
-                timer.Reset();
             }
             // if the player enters a key
             if (Input.anyKeyDown && tracker != -1)
@@ -258,15 +204,6 @@ public class MarchingMinigame : MonoBehaviour
                     }
                 }
             }
-            if (timer.timerDisplay <= 0)
-            {
-                GameManager.Instance.SubtractScore(Random.Range(0.5f, 1f));
-                ranOutOfTime = true;
-                GoBack();
-                timer.Reset();
-                countDownCoroutine = CountDown();
-                StartCoroutine(countDownCoroutine);
-            }
         }
         else if (phase == 3)
         {
@@ -282,7 +219,7 @@ public class MarchingMinigame : MonoBehaviour
 
     void GoBack()
     {
-        for(int i = 0; i < numberOfSlimes; i++)
+        for (int i = 0; i < numberOfSlimes; i++)
         {
             slimes[i].assignPos(previousPositions[i]);
         }
@@ -293,7 +230,6 @@ public class MarchingMinigame : MonoBehaviour
 
     private IEnumerator CountDown()
     {
-        timer.Reset();
         timer.timerText.text = "";
         timer.startTicking = false;
         countingDown = true;
@@ -304,7 +240,6 @@ public class MarchingMinigame : MonoBehaviour
         audienceSentence.text = "1";
         yield return new WaitForSeconds(1f);
         phase = 1;
-        timer.startTicking = true;
         timer.timerText.text = "" + timer.timerLevelDisplay;
         countingDown = false;
     }
@@ -312,6 +247,36 @@ public class MarchingMinigame : MonoBehaviour
     private IEnumerator LoadScene()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("ScoreReview", LoadSceneMode.Single);
+        SceneManager.LoadScene("Cutscene2", LoadSceneMode.Single);
+    }
+
+
+    public void Scroll()
+    {
+        currentScrollType = StartCoroutine(ScrollTyping());
+    }
+
+    public void NextLine()
+    {
+        StopCoroutine(currentScrollType);
+        currentLine++;
+        goText = false;
+    }
+
+    public IEnumerator ScrollTyping()
+    {
+        int index = 0;
+        tutorialText.text = "";
+        isTyping = true;
+        cancelTyping = false;
+        string currentTextLine = dialgueLines[currentLine];
+        while (isTyping && !cancelTyping && (index < currentTextLine.Length - 1))
+        {
+            tutorialText.text += currentTextLine[index];
+            index++;
+            yield return new WaitForSeconds(typeSpeed);
+        }
+        cancelTyping = true;
+        tutorialText.text = dialgueLines[currentLine];
     }
 }

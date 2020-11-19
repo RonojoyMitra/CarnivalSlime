@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TrainingIrregular : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class TrainingIrregular : MonoBehaviour
 
     public bool stun;
     private IEnumerator stunCoroutine;
+    private IEnumerator loadNextScene;
 
     public int rounds;
 
@@ -121,7 +123,7 @@ public class TrainingIrregular : MonoBehaviour
                 goText = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && currentLine == endLine)
+            if (Input.GetKeyDown(KeyCode.Space) && currentLine == endLine && cancelTyping && tutorialText.text == dialgueLines[currentLine])
             {
                 phase = 1;
                 tutorialSpeech.SetActive(false);
@@ -180,10 +182,13 @@ public class TrainingIrregular : MonoBehaviour
                         // if the player enters an incorrect key
                         else
                         {
+                            if (!stun)
+                            {
+                                GameManager.Instance.SubtractScore(Random.Range(0.25f, 0.75f));
+                            }
                             stun = true;
                             stunCoroutine = Stun();
                             StartCoroutine(stunCoroutine);
-                            GameManager.Instance.SubtractScore(Random.Range(0.25f, 0.75f));
                         }
                     }
                 }
@@ -224,6 +229,9 @@ public class TrainingIrregular : MonoBehaviour
         else if (phase == 3)
         {
             slime.assignPos(new Vector3(0, 0, 0));
+            loadNextScene = LoadScene();
+            StartCoroutine(loadNextScene);
+            phase = 4;
         }
     }
 
@@ -285,6 +293,12 @@ public class TrainingIrregular : MonoBehaviour
         stun = false;
     }
 
+    private IEnumerator LoadScene()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("TrainingMarching", LoadSceneMode.Single);
+    }
+
 
     public void Scroll()
     {
@@ -313,8 +327,5 @@ public class TrainingIrregular : MonoBehaviour
         }
         cancelTyping = true;
         tutorialText.text = dialgueLines[currentLine];
-        //yield return new WaitForSeconds(stayTime);
-        //currentLine++;
-        //goText = false;
     }
 }

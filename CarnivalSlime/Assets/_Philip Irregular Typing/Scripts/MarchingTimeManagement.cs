@@ -21,7 +21,7 @@ public class MarchingTimeManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        day = 0;
+        day = GameManager.Instance.day;
         timerFloat = 0f;
         if (day == 0 || day == 1)
         {

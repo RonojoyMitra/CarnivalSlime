@@ -1,0 +1,14 @@
+This is the tutorial for the MARCHING portion of the performance.
+In this game, you will have to redirect each of the many slimes on stage to a letter.
+The slimes are standing in a line, and each slime in the line must follow the slime in front of them. 
+The slime in the very first position will always be given a new letter each round.
+You must send the first slime to its new letter. 
+Then, you must send the second slime to wherever the first slime was.
+Then, you must send the third slime to wherever the second slime was...
+I think you get the gist! 
+Once you do this for all slimes, the round will be over and you will be given a new letter. 
+There are a little more than 10 "rounds" you'll need to do each day.
+You'd normally have to type these letters under a time constraint...
+But during this tutorial section, don't worry about it!
+Just get used to the mechanics and make sure you're ready for performance day.
+Good luck and don't mess up!

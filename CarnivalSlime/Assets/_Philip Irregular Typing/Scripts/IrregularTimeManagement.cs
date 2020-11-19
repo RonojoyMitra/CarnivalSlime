@@ -21,6 +21,7 @@ public class IrregularTimeManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        day = GameManager.Instance.day;
         timerFloat = 0f;
         if (day == 0 || day == 1)
         {
