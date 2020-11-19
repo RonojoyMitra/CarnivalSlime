@@ -1,0 +1,12 @@
+This is the tutorial for the IRREGULAR portion of the performance.
+In this game, you will type words in order of where the letters appear on the keyboard. 
+You will either type these letters out from left to right or right to left. 
+If you were to type the word "WORD" from left to right, for example... 
+You would type it in this order: "WDRO"
+This is because the letters of "WORD" appear in the order "W", "D", "R", "O" on your keyboard.
+Likewise, if you were to go from right to left, you would type "ORDW".
+Each day will require you to "irregularly" type out these words 6 total times. 
+You'd normally have to type these words under a time constraint...
+But during this tutorial section, don't worry about it!
+Just get used to the mechanics and make sure you're ready for performance day.
+Good luck and don't mess up!
