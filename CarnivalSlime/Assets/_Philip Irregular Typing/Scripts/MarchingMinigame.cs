@@ -67,7 +67,7 @@ public class MarchingMinigame : MonoBehaviour
 
         if (day == 0 || day == 1)
         {
-            totalRounds = 13;
+            totalRounds = 10;
             numberOfSlimes = 3;
             previousPositions = new Vector3[numberOfSlimes];
             slime4.gameObject.SetActive(false);
@@ -80,7 +80,7 @@ public class MarchingMinigame : MonoBehaviour
         }
         else if (day == 2)
         {
-            totalRounds = 14;
+            totalRounds = 11;
             numberOfSlimes = 4;
             previousPositions = new Vector3[numberOfSlimes];
             slime4.gameObject.SetActive(true);
@@ -96,7 +96,7 @@ public class MarchingMinigame : MonoBehaviour
         }
         else if (day == 3)
         {
-            totalRounds = 15;
+            totalRounds = 12;
             numberOfSlimes = 5;
             previousPositions = new Vector3[numberOfSlimes];
             slime4.gameObject.SetActive(true);
@@ -115,7 +115,7 @@ public class MarchingMinigame : MonoBehaviour
         }
         else if (day == 4)
         {
-            totalRounds = 16;
+            totalRounds = 13;
             numberOfSlimes = 6;
             previousPositions = new Vector3[numberOfSlimes];
             slime4.gameObject.SetActive(true);
@@ -137,7 +137,7 @@ public class MarchingMinigame : MonoBehaviour
         }
         else if (day == 5)
         {
-            totalRounds = 17;
+            totalRounds = 14;
             numberOfSlimes = 7;
             previousPositions = new Vector3[numberOfSlimes];
             slime4.gameObject.SetActive(true);
@@ -312,6 +312,6 @@ public class MarchingMinigame : MonoBehaviour
     private IEnumerator LoadScene()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("ScoreReview", LoadSceneMode.Single);
+        SceneManager.LoadScene("Hoops Minigame", LoadSceneMode.Single);
     }
 }

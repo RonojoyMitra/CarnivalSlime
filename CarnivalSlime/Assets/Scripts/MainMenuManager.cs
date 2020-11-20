@@ -16,7 +16,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-            SceneManager.LoadScene("Cutscene1", LoadSceneMode.Single);
+            SceneManager.LoadScene("IntroCutscene", LoadSceneMode.Single);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HoopsMiniGame : MonoBehaviour
 {
@@ -23,11 +24,17 @@ public class HoopsMiniGame : MonoBehaviour
     public int roundStage = 0;
     // 0 = get to area
     // 1 = go to hoops
+    public int phase;
+    private IEnumerator loadNextScene;
+    public int day;
 
     public Transform Marker; 
 
     void Start()
     {
+        // adjust difficulty based on this int (it'll be 0 for training, and 1,2,3,4,5 for the performance days
+        day = GameManager.Instance.day;
+
         roundStage = 0;
         occupiedKey = 0;
         currentRound = 0;
@@ -103,11 +110,16 @@ public class HoopsMiniGame : MonoBehaviour
                     stagingString = Board.alphabet[stagingKey];
                     Debug.Log($"Go To Key {Board.alphabet[stagingKey]}");
                     GameObject.Find("DIST").GetComponent<TextMeshPro>().text = $"Go To Key {Board.alphabet[stagingKey]}";
+                phase++;
                 roundStage = 0;
             }
-            
         }
 
+        if (phase == 10)
+        {
+            loadNextScene = LoadScene();
+            StartCoroutine(loadNextScene);
+        }
         Marker.position = Vector3.Lerp(Marker.position, new Vector3(Board.keySprites[occupiedKey].transform.position.x, 1.5f, Board.keySprites[occupiedKey].transform.position.z), Time.deltaTime * 16);
         GameObject.Find("Directional Light").GetComponent<Light>().color = Color.Lerp(GameObject.Find("Directional Light").GetComponent<Light>().color,Color.white,Time.deltaTime * 15);
     }
@@ -129,4 +141,12 @@ public class HoopsMiniGame : MonoBehaviour
         pole.forward = new Vector3(directionVector.x,0,directionVector.y);
     }
 
+    /*
+     * remember to make a copy of this script in the TRAINING SCENE and make it loadScene("Cutscene 2")
+    */
+    private IEnumerator LoadScene()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("ScoreReview", LoadSceneMode.Single);
+    }
 }

@@ -18,11 +18,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Cutscene1.unity
     guid: f9e8c170d19174430bbeeb865bac41ff
   - enabled: 1
+    path: Assets/Scenes/IntroCutscene.unity
+    guid: 6ef81b36902cc3d43b98e39a14a723a8
+  - enabled: 1
     path: Assets/Scenes/TrainingIrregular.unity
     guid: 406e7e8c519d041efa8bcf62ef38c487
   - enabled: 1
     path: Assets/Scenes/TrainingMarching.unity
     guid: 8cb28250aecb54083bf92a849b5bae76
+  - enabled: 1
+    path: Assets/Scenes/TrainingHoops.unity
+    guid: 549c2187ebb8a4d698547d73d6a6d205
   - enabled: 1
     path: Assets/Scenes/Cutscene2.unity
     guid: 6b029fd255f9e48d3ad8bab8159e173f
@@ -32,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Marching Minigame.unity
     guid: 20558469611fb491ca4fda71dff10f9c
+  - enabled: 1
+    path: Assets/Scenes/Hoops Minigame.unity
+    guid: 11984ae9a046742a1b93b666a712f9b6
   - enabled: 1
     path: Assets/Scenes/ScoreReview.unity
     guid: 3897f42b99d8548d7ad95e2d3d7ebfc7

@@ -247,7 +247,7 @@ public class TrainingMarching : MonoBehaviour
     private IEnumerator LoadScene()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Cutscene2", LoadSceneMode.Single);
+        SceneManager.LoadScene("TrainingHoops", LoadSceneMode.Single);
     }
 
 
