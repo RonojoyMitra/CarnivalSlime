@@ -503,7 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1103146122}
   comment: {fileID: 1749066813}
-  nextDay: {fileID: 0}
+  nextDay: {fileID: 1303999814}
   gradeString: 
 --- !u!4 &1050873297
 Transform:
