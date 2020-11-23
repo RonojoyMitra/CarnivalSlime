@@ -494,7 +494,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.4
+  m_Intensity: 1.8
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -557,6 +557,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 228.091, y: -186.257, z: 7.2609863}
+--- !u!1 &1022339733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1022339735}
+  - component: {fileID: 1022339734}
+  m_Layer: 0
+  m_Name: PostProcessing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1022339734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022339733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 7d23aecb3ff95c5498a98d83ce0b74a9, type: 2}
+--- !u!4 &1022339735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022339733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1047985522
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +845,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399870217}
   m_LocalRotation: {x: 0.10212692, y: 0.008948046, z: -0.0009183189, w: 0.9947307}
-  m_LocalPosition: {x: -0.45999998, y: 16.94437, z: -37.670002}
+  m_LocalPosition: {x: -0.5, y: 17.2, z: -39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -825,7 +873,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -862,8 +910,9 @@ AudioSource:
   m_GameObject: {fileID: 1423084345}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 17ff7ecc2914922479ec69eba30e8dc8,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: fd8672357424a734f9cfd9c5fdf59f9a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -975,14 +1024,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54449e8ddbd8134438c1b038af1bc347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainLoopAudioSource: {fileID: 0}
-  secondaryLoopAudioSource: {fileID: 0}
-  crowdMurmur: {fileID: 0}
-  crowdQuietens: {fileID: 0}
-  crowdClap: {fileID: 0}
-  crowdClapEnd: {fileID: 0}
-  crowdLaugh: {fileID: 0}
-  crowdBoo: {fileID: 0}
+  mainLoopAudioSource: {fileID: 1423084346}
+  secondaryLoopAudioSource: {fileID: 1423084349}
+  crowdMurmur: {fileID: 8300000, guid: fd8672357424a734f9cfd9c5fdf59f9a, type: 3}
+  crowdQuietens: {fileID: 8300000, guid: 5c3fee19d5464d04a9776ec4a491228b, type: 3}
+  crowdClap: {fileID: 8300000, guid: 166461994a694a349992534fb2b55f59, type: 3}
+  crowdClapEnd: {fileID: 8300000, guid: 2795b5eb47298f8479fad033ddfd93b0, type: 3}
+  crowdLaugh: {fileID: 8300000, guid: de6f11c8b89f8ad4d8605154753e3966, type: 3}
+  crowdBoo: {fileID: 8300000, guid: 79242aa743967904c94584d84269a874, type: 3}
 --- !u!82 &1423084349
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1576,7 +1625,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a5bc03c25bb291d408037ee14744255f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.09
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5bc03c25bb291d408037ee14744255f,
         type: 3}
