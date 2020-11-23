@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class HoopsMiniGame : MonoBehaviour
 {
-    KeyboardSystem Board;
+    public KeyboardSystem Board;
 
     public int occupiedKey;
 
@@ -28,7 +28,11 @@ public class HoopsMiniGame : MonoBehaviour
     private IEnumerator loadNextScene;
     public int day;
 
-    public Transform Marker; 
+    public Transform Marker;
+    public Transform Slime;
+    public SlimeAnimationController slimeAnim;
+    public Vector3 slimeForward;
+
 
     void Start()
     {
@@ -38,7 +42,7 @@ public class HoopsMiniGame : MonoBehaviour
         roundStage = 0;
         occupiedKey = 0;
         currentRound = 0;
-        Board = GetComponent<KeyboardSystem>();
+        //Board = GetComponent<KeyboardSystem>();
 
         stagingKey = Random.Range(0,26);
         stagingString = Board.alphabet[stagingKey];
@@ -66,6 +70,12 @@ public class HoopsMiniGame : MonoBehaviour
 
                         if (Board.isKeyTangent(occupiedKey,inputID))
                         {
+                            if (occupiedKey!=inputID)
+                            {
+                                slimeForward = Board.keySprites[inputID].transform.position - Board.keySprites[occupiedKey].transform.position;
+                                slimeForward.Normalize();
+                            }
+                            Slime.localScale = new Vector3(0.36029f * 1.2f, 0.36029f * .3f, 0.36029f * 1.2f);
                             occupiedKey = inputID;
                         }
 
@@ -99,12 +109,12 @@ public class HoopsMiniGame : MonoBehaviour
                     if (Board.isKeyTangent(occupiedKey, targetKey))
                     {
                         Debug.Log("SUCCESS!!");
-                        GameObject.Find("Directional Light").GetComponent<Light>().color = Color.green;
+                        GameObject.Find("Spot Light").GetComponent<Light>().color = Color.green;
                     }
                     else
                     {
                         Debug.Log("FAILURE!!");
-                        GameObject.Find("Directional Light").GetComponent<Light>().color = Color.red;
+                        GameObject.Find("Spot Light").GetComponent<Light>().color = Color.red;
                     }
                     stagingKey = Random.Range(0, 26);
                     stagingString = Board.alphabet[stagingKey];
@@ -121,12 +131,36 @@ public class HoopsMiniGame : MonoBehaviour
             StartCoroutine(loadNextScene);
         }
         Marker.position = Vector3.Lerp(Marker.position, new Vector3(Board.keySprites[occupiedKey].transform.position.x, 1.5f, Board.keySprites[occupiedKey].transform.position.z), Time.deltaTime * 16);
-        GameObject.Find("Directional Light").GetComponent<Light>().color = Color.Lerp(GameObject.Find("Directional Light").GetComponent<Light>().color,Color.white,Time.deltaTime * 15);
+        SlimeController();
+
+        GameObject.Find("Spot Light").GetComponent<Light>().color = Color.Lerp(GameObject.Find("Spot Light").GetComponent<Light>().color,new Color(1, 0.7215686f,0),Time.deltaTime * 15);
     }
+
+    bool jumped;
+    float distFromLandingPoint;
+
+    void SlimeController()
+    {
+        if (roundStage==0)
+        {
+            Slime.forward = Vector3.Lerp(Slime.forward, slimeForward, Time.deltaTime * 10);
+        }
+        else
+        {
+            Debug.Log(distFromLandingPoint);
+            Slime.forward = Vector3.Lerp(Slime.forward, pole.forward, Time.deltaTime * 10);
+        }
+
+        Slime.localScale = Vector3.Lerp(Slime.localScale, Vector3.one * 0.36029f, Time.deltaTime * 25);
+    }
+
     public Transform pole;
     void GenerateDistance()
     {
         targetKey = Random.Range(0,26);
+        distFromLandingPoint = Vector3.Distance(new Vector3(Marker.position.x,0,Marker.position.y),
+                                                new Vector3(Board.keySprites[targetKey].transform.position.x,0,Board.keySprites[occupiedKey].transform.position.z));
+
         float dist = Vector3.Distance(Board.keySprites[occupiedKey].transform.position, Board.keySprites[targetKey].transform.position);
         dist /= 2;
         dist = Mathf.Round(dist);

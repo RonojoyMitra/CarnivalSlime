@@ -6,11 +6,13 @@ public class SlimeAnimationController : MonoBehaviour
 {
     public bool walking = false;
     public bool idling = true;
-    Animator anim;
+    public Animator anim;
 
     public void ToggleWalk()
     {
-        walking = !walking;
+        walking = true;
+        idling = false;
+        anim.SetBool("Idling", idling);
         anim.SetBool("Walking",walking);
     }
 
@@ -21,8 +23,10 @@ public class SlimeAnimationController : MonoBehaviour
 
     public void ToggleIdle()
     {
-        idling = !idling;
-        anim.SetBool("Idling",idling);
+        idling = true;
+        walking = false;
+        anim.SetBool("Idling", idling);
+        anim.SetBool("Walking", walking);
     }
 
     public void TriggerCeleb()
