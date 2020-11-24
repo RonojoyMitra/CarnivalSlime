@@ -11,6 +11,8 @@ public class IrregularTypingText : MonoBehaviour
     public KeyboardSystem stageBoard;
     public IrregularTimeManagement timer;
 
+    public AudioController soundManager;
+
     // starting (offscreen) positions for the slime at the beginning of the trick
     public Vector3 leftStartPosition;
     public Vector3 rightStartPosition;
@@ -145,6 +147,8 @@ public class IrregularTypingText : MonoBehaviour
                 phase = 1;
                 slime.assignPos(leftStartPosition);
                 timer.startTicking = true;
+                Debug.Log("hey");
+                soundManager.ShowStarting();
             }
         }
         // this is an unseen phase that gets the audience comments ready
@@ -233,11 +237,16 @@ public class IrregularTypingText : MonoBehaviour
                     playerInput.text = "Great job!";
                     phase = 3;
                 }
+                else
+                {
+                    soundManager.CrowdClap();
+                }
             }
 
             // if the player runs out of time
             if (timer.timerDisplay == 0)
             {
+                soundManager.CrowdBoo();
                 if (leftToRight)
                 {
                     slime.assignPos(leftStartPosition);
@@ -259,6 +268,7 @@ public class IrregularTypingText : MonoBehaviour
         else if (phase == 3)
         {
             slime.assignPos(new Vector3(0, 0, 0));
+            soundManager.CrowdClapEnd();
             loadNextScene = LoadScene();
             StartCoroutine(loadNextScene);
             phase = 4;
