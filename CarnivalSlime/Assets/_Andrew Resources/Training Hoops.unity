@@ -5904,6 +5904,7 @@ GameObject:
   - component: {fileID: 1617115067}
   - component: {fileID: 1617115068}
   - component: {fileID: 1617115070}
+  - component: {fileID: 1617115071}
   m_Layer: 0
   m_Name: StageBoard
   m_TagString: Untagged
@@ -6048,7 +6049,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617115065}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90fdcfa93b7c87649a6b546536e43025, type: 3}
   m_Name: 
@@ -6082,9 +6083,9 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.5
       value: 1
-      inSlope: 2
-      outSlope: -2
-      tangentMode: 69
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
@@ -6101,6 +6102,66 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   pole: {fileID: 1476948586}
+--- !u!114 &1617115071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617115065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3d5694bed338d4988b19d19ae861ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Board: {fileID: 1617115067}
+  occupiedKey: 0
+  stagingKey: 0
+  stagingString: 
+  targetKey: 0
+  jumpCommand: 
+  currentRound: 0
+  roundStage: 0
+  phase: 0
+  day: 0
+  Marker: {fileID: 1752504729}
+  Slime: {fileID: 534595046}
+  slimeAnim: {fileID: 1666080912}
+  slimeForward: {x: 0, y: 0, z: 0}
+  jump:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2
+      outSlope: -2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  pole: {fileID: 0}
 --- !u!1 &1626496015
 GameObject:
   m_ObjectHideFlags: 0
