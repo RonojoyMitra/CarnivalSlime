@@ -1,12 +1,12 @@
 012Look at him jump!
-014This trick is cool!
+014That trick is cool!
 012This is the best!
 000Look at him go!
 003So good!
 011Watch your step!
 003Oh nice!
 006Don't hurt yourself!
-015Do slimes have feet?
+014Do slime have feet?
 008It's so fast!
 000Very impressive!
 006Don't slip!
