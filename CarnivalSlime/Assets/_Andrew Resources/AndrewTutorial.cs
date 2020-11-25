@@ -6,6 +6,7 @@ using TMPro;
 
 public class AndrewTutorial : MonoBehaviour
 {
+    public TextScrollSoundManager textScrollSoundManager;
 
     // tutorial exclusives
     public TextAsset textFile;
@@ -86,6 +87,7 @@ public class AndrewTutorial : MonoBehaviour
         isTyping = true;
         cancelTyping = false;
         string currentTextLine = dialgueLines[currentLine];
+        textScrollSoundManager.Scroll();
         while (isTyping && !cancelTyping && (index < currentTextLine.Length - 1))
         {
             tutorialText.text += currentTextLine[index];
@@ -93,6 +95,7 @@ public class AndrewTutorial : MonoBehaviour
             yield return new WaitForSeconds(typeSpeed);
         }
         cancelTyping = true;
+        textScrollSoundManager.Stop();
         tutorialText.text = dialgueLines[currentLine];
     }
 

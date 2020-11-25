@@ -8,13 +8,15 @@ public class HoopsMiniGame : MonoBehaviour
 {
     public KeyboardSystem Board;
 
+    public AudioController soundManager;
+    public GameJuiceAudio gameSoundManager;
+
     public int occupiedKey;
 
     public int stagingKey;
     public string stagingString;
 
     public int targetKey;
-
 
     public string jumpCommand;
     string[] directions = { "North", "North-East", "East", "South-East", "South", "South-West", "West", "North-West" };
@@ -39,7 +41,10 @@ public class HoopsMiniGame : MonoBehaviour
     {
         // adjust difficulty based on this int (it'll be 0 for training, and 1,2,3,4,5 for the performance days
         day = GameManager.Instance.day;
-
+        if (day != 0)
+        {
+            soundManager.ShowStarting();
+        }
         roundStage = 0;
         occupiedKey = 0;
         currentRound = 0;
@@ -76,6 +81,7 @@ public class HoopsMiniGame : MonoBehaviour
                         {
                             if (occupiedKey!=inputID)
                             {
+                                gameSoundManager.Step();
                                 slimeForward = Board.keySprites[inputID].transform.position - Board.keySprites[occupiedKey].transform.position;
                                 slimeForward.Normalize();
                             }
@@ -115,17 +121,38 @@ public class HoopsMiniGame : MonoBehaviour
                 }
                     if (Board.isKeyTangent(occupiedKey, targetKey))
                     {
-                        Debug.Log("SUCCESS!!");
-                        GameObject.Find("Spot Light").GetComponent<Light>().color = Color.green;
+                        //Debug.Log("SUCCESS!!");
+                        gameSoundManager.Win();
+                        float randomAudienceReaction = Random.Range(0f, 1f);
+                        if (randomAudienceReaction <= 0.5f)
+                        {
+                            if (day != 0)
+                            {
+                                soundManager.CrowdClap();
+                            }
+                        }
+                        else
+                        {
+                            if (day != 0)
+                            {
+                                soundManager.CrowdLaugh();
+                            }
                     }
+                        GameObject.Find("Spot Light").GetComponent<Light>().color = Color.green;
+                        }
                     else
                     {
-                        Debug.Log("FAILURE!!");
+                        //Debug.Log("FAILURE!!");
+                        gameSoundManager.Wrong();
+                        if (day != 0)
+                        {
+                            soundManager.CrowdBoo();
+                        }
                         GameObject.Find("Spot Light").GetComponent<Light>().color = Color.red;
                     }
                     stagingKey = Random.Range(0, 26);
                     stagingString = Board.alphabet[stagingKey];
-                    Debug.Log($"Go To Key {Board.alphabet[stagingKey]}");
+                    //Debug.Log($"Go To Key {Board.alphabet[stagingKey]}");
                     GameObject.Find("DIST").GetComponent<TextMeshPro>().text = $"Go To Key {Board.alphabet[stagingKey]}";
                 phase++;
                 roundStage = 0;
@@ -149,7 +176,6 @@ public class HoopsMiniGame : MonoBehaviour
 
         if (phase == phases)
         {
-            Debug.Log("HELLOOOOO");
             loadNextScene = LoadScene();
             StartCoroutine(loadNextScene);
         }
@@ -203,6 +229,10 @@ public class HoopsMiniGame : MonoBehaviour
     */
     private IEnumerator LoadScene()
     {
+        if (day != 0)
+        {
+            soundManager.CrowdClapEnd();
+        }
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("ScoreReview", LoadSceneMode.Single);
     }
