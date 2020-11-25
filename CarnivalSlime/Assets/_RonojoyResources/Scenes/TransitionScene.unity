@@ -279,6 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383363072}
   - component: {fileID: 383363071}
+  - component: {fileID: 383363073}
   m_Layer: 0
   m_Name: Paper2
   m_TagString: Untagged
@@ -350,6 +351,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &383363073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383363070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217235d63c36351488b611d4bcd5d0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Date: {fileID: 1727015362}
+  Day: {fileID: 437103252}
 --- !u!1 &437103250
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +377,7 @@ GameObject:
   - component: {fileID: 437103253}
   - component: {fileID: 437103252}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Day
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -600,7 +615,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -759,7 +774,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: b02429c0abcfb1f46857ac6a3f00c7d5, type: 3}
-    m_FontSize: 17
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -770,7 +785,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 15th March 1853
+  m_Text: Monday, March 15th 1853
 --- !u!222 &1727015363
 CanvasRenderer:
   m_ObjectHideFlags: 0
