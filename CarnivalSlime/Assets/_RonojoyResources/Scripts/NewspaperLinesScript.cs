@@ -7,18 +7,23 @@ public class NewspaperLinesScript : MonoBehaviour
     public TextMesh Date;
     public TextMesh Headline1;
     public TextMesh Headline2;
+
+    public int day;
+    public float score;
     // Start is called before the first frame update
     void Start()
     {
-        SetDate();
-        SetHeadline1();
-        SetHeadline2();
+        //SetDate();
+        //SetHeadline1();
+        //SetHeadline2();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        SetDate();
+        SetHeadline1();
+        SetHeadline2();
     }
 
     void SetDate()
@@ -50,10 +55,24 @@ public class NewspaperLinesScript : MonoBehaviour
     {
         float score = GameManager.Instance.score;
 
-        if (score < 3f)
+        if (score > 9f)
+        {
+            Headline1.text = "Moving Slime wows";
+        }
+        if (score > 7f)
+        {
+            Headline1.text = "Living Slime entertains";
+        }
+        if (score > 5f)
+        {
+            Headline1.text = "Barnum's 'Slime' falls flat";
+        }
+        if (score > 3f)
         {
             Headline1.text = "Barnum's 'Slime' Flops";
         }
+
+         
     }
 
     void SetHeadline2()
@@ -65,19 +84,19 @@ public class NewspaperLinesScript : MonoBehaviour
         }
         if (day == 2)
         {
-            Headline2.text = "Tuesday, March 16th 1853";
+            Headline2.text = "On it's second showing";
         }
         if (day == 3)
         {
-            Headline2.text = "Wednesday, March 17th 1853";
+            Headline2.text = "in wednesday's performance";
         }
         if (day == 4)
         {
-            Headline2.text = "Thursday, March 18th 1853";
+            Headline2.text = "on its penultimate show";
         }
         if (day == 5)
         {
-            Headline2.text = "Friday, March 19th 1853";
+            Headline2.text = "On its Final show";
         }
     }
 }
