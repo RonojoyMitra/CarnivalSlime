@@ -59,6 +59,7 @@ public class NewspaperLinesScript : MonoBehaviour
         if (score > 0f)
         {
             Headline1.text = "Barnum's 'Slime' Flops";
+            Headline1.fontSize = 15;
         }
         if (score > 3f)
         {
@@ -68,6 +69,7 @@ public class NewspaperLinesScript : MonoBehaviour
         if (score > 5f)
         {
             Headline1.text = "Living Slime pleases";
+            Headline1.fontSize = 15;
         }
         if (score > 6f)
         {
@@ -77,6 +79,7 @@ public class NewspaperLinesScript : MonoBehaviour
         if (score > 8.8f)
         {
             Headline1.text = "Moving Slime wows";
+            Headline1.fontSize = 15;
         }
     }
 
@@ -86,10 +89,12 @@ public class NewspaperLinesScript : MonoBehaviour
         if (day == 1)
         {
             Headline2.text = "On Opening Night";
+            Headline2.fontSize = 15;
         }
         if (day == 2)
         {
             Headline2.text = "On it's second showing";
+            Headline2.fontSize = 15;
         }
         if (day == 3)
         {
@@ -104,6 +109,7 @@ public class NewspaperLinesScript : MonoBehaviour
         if (day == 5)
         {
             Headline2.text = "On its Final show";
+            Headline2.fontSize = 15;
         }
     }
 }
