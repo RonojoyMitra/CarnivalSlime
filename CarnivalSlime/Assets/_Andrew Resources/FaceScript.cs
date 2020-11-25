@@ -23,7 +23,6 @@ public class FaceScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        slime = GameObject.Find("SlimeAvatar").transform;
         SR=GetComponentInChildren<SpriteRenderer>();
         transform.position = slime.position + new Vector3(0,1,0);
     }

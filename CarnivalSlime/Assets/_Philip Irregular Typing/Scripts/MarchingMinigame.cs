@@ -71,7 +71,7 @@ public class MarchingMinigame : MonoBehaviour
 
         if (day == 0 || day == 1)
         {
-            totalRounds = 10;
+            totalRounds = 8;
             numberOfSlimes = 3;
             previousPositions = new Vector3[numberOfSlimes];
             slime4.gameObject.SetActive(false);
@@ -84,7 +84,7 @@ public class MarchingMinigame : MonoBehaviour
         }
         else if (day == 2)
         {
-            totalRounds = 11;
+            totalRounds = 9;
             numberOfSlimes = 4;
             previousPositions = new Vector3[numberOfSlimes];
             slime4.gameObject.SetActive(true);
@@ -100,7 +100,7 @@ public class MarchingMinigame : MonoBehaviour
         }
         else if (day == 3)
         {
-            totalRounds = 12;
+            totalRounds = 10;
             numberOfSlimes = 5;
             previousPositions = new Vector3[numberOfSlimes];
             slime4.gameObject.SetActive(true);
@@ -119,7 +119,7 @@ public class MarchingMinigame : MonoBehaviour
         }
         else if (day == 4)
         {
-            totalRounds = 13;
+            totalRounds = 11;
             numberOfSlimes = 6;
             previousPositions = new Vector3[numberOfSlimes];
             slime4.gameObject.SetActive(true);
@@ -141,7 +141,7 @@ public class MarchingMinigame : MonoBehaviour
         }
         else if (day == 5)
         {
-            totalRounds = 14;
+            totalRounds = 12;
             numberOfSlimes = 7;
             previousPositions = new Vector3[numberOfSlimes];
             slime4.gameObject.SetActive(true);

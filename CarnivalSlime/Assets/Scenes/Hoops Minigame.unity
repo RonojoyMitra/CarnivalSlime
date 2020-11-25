@@ -1005,6 +1005,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudienceMeter
       objectReference: {fileID: 0}
+    - target: {fileID: 7728338780341514483, guid: 6cf4eedda18682445ac6c6572145ba6f,
+        type: 3}
+      propertyPath: slider
+      value: 
+      objectReference: {fileID: 392686718202598868}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf4eedda18682445ac6c6572145ba6f, type: 3}
 --- !u!1 &445233175

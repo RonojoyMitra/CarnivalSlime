@@ -39,7 +39,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Marching Minigame.unity
     guid: 20558469611fb491ca4fda71dff10f9c
   - enabled: 1
-    path: Assets/_Andrew Resources/Hoops Minigame.unity
+    path: Assets/Scenes/Hoops Minigame.unity
     guid: b35b08d0138ea2942b2aac20d3224ec5
   - enabled: 0
     path: Assets/Scenes/Hoops Minigame[old].unity

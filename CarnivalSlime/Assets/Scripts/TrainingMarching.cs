@@ -82,7 +82,7 @@ public class TrainingMarching : MonoBehaviour
         slimes[1].assignPos(waitPosition2);
         slimes[2].assignPos(waitPosition3);
 
-        totalRounds = 13; 
+        totalRounds = 8; 
         numberOfSlimes = 3;
         previousPositions = new Vector3[numberOfSlimes];
         previousPositions[0] = waitPosition1;
