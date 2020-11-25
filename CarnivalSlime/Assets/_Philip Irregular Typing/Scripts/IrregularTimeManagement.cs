@@ -5,6 +5,8 @@ using TMPro;
 
 public class IrregularTimeManagement : MonoBehaviour
 {
+    public TimeAudio timeSoundManager;
+
     public TextMeshPro timerText;
 
     // tracks what day in the game it is
@@ -58,6 +60,7 @@ public class IrregularTimeManagement : MonoBehaviour
                 timerFloat = 0f;
                 if (timerDisplay > 0)
                 {
+                    timeSoundManager.Tick();
                     timerDisplay--;
                     timerText.text = "" + timerDisplay;
                 }

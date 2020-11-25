@@ -14,6 +14,10 @@ public class MarchingMinigame : MonoBehaviour
     public KeyboardSystem stageBoard;
     public MarchingTimeManagement timer;
 
+    public AudioController soundManager;
+    public GameJuiceAudio gameSoundManager;
+    public TimeAudio timeSoundManager;
+
     public TestMarkerScript slime1;
     public TestMarkerScript slime2;
     public TestMarkerScript slime3;
@@ -170,6 +174,7 @@ public class MarchingMinigame : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                soundManager.ShowStarting();
                 countDownCoroutine = CountDown();
                 StartCoroutine(countDownCoroutine);
             }
@@ -204,6 +209,16 @@ public class MarchingMinigame : MonoBehaviour
             // if the player correctly types in all of the letters
             if (tracker == -1)
             {
+                float randomAudienceReaction = Random.Range(0f, 1f);
+                if (randomAudienceReaction <= 0.5f)
+                {
+                    soundManager.CrowdClap();
+                }
+                else
+                {
+                    soundManager.CrowdLaugh();
+                }
+                gameSoundManager.Win();
                 if (maxLengthLetters != numberOfSlimes)
                 {
                     maxLengthLetters++;
@@ -241,17 +256,22 @@ public class MarchingMinigame : MonoBehaviour
                     if (Input.GetKeyDown(vKey) && inputID < stageBoard.keyBools.Count && inputID >= 0) //if its a valid input (can be expanded upon)
                     {
                         // if the player enters a correct key (and is able to because the slime isn't stunned)
-                        if (inputString == queueLetters[tracker] /*&& !stun*/)
+                        if (inputString == queueLetters[tracker])
                         {
                             playerInput.text += inputString.ToUpper();
                             slimes[slimeTracker].assignPos(stageBoard.keySprites[inputID].transform.position);
                             slimeTracker++;
                             tracker--;
+                            if (tracker != -1)
+                            {
+                                gameSoundManager.Step();
+                            }
                         }
 
                         // if the player enters an incorrect key
                         else
                         {
+                            gameSoundManager.Wrong();
                             GameManager.Instance.SubtractScore(Random.Range(0.25f, 1f));
                             GoBack();
                         }
@@ -260,6 +280,7 @@ public class MarchingMinigame : MonoBehaviour
             }
             if (timer.timerDisplay <= 0)
             {
+                soundManager.CrowdBoo();
                 GameManager.Instance.SubtractScore(Random.Range(0.5f, 1f));
                 ranOutOfTime = true;
                 GoBack();
@@ -270,6 +291,7 @@ public class MarchingMinigame : MonoBehaviour
         }
         else if (phase == 3)
         {
+            soundManager.CrowdClapEnd();
             timer.startTicking = false;
             timer.timerText.text = "";
             audienceSentence.text = "Great job!";
@@ -297,12 +319,16 @@ public class MarchingMinigame : MonoBehaviour
         timer.timerText.text = "";
         timer.startTicking = false;
         countingDown = true;
+        timeSoundManager.CountDown();
         audienceSentence.text = "3";
         yield return new WaitForSeconds(1f);
+        timeSoundManager.CountDown();
         audienceSentence.text = "2";
         yield return new WaitForSeconds(1f);
+        timeSoundManager.CountDown();
         audienceSentence.text = "1";
         yield return new WaitForSeconds(1f);
+        timeSoundManager.Go();
         phase = 1;
         timer.startTicking = true;
         timer.timerText.text = "" + timer.timerLevelDisplay;

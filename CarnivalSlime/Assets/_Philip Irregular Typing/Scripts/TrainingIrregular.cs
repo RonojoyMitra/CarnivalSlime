@@ -9,7 +9,9 @@ public class TrainingIrregular : MonoBehaviour
     public int day;
 
     public KeyboardSystem stageBoard;
-    public IrregularTimeManagement timer;
+
+    public GameJuiceAudio gameSoundManager;
+    public TextScrollSoundManager textScrollSoundManager;
 
     // tutorial exclusives
     public TextAsset textFile;
@@ -62,6 +64,7 @@ public class TrainingIrregular : MonoBehaviour
 
     void Start()
     {
+        MusicManager.Instance.Tutorial();
         randomLine = Random.Range(0, 12);
         letterCount = 4;
 
@@ -162,7 +165,7 @@ public class TrainingIrregular : MonoBehaviour
         else if (phase == 2)
         {
             // if the player enters a key
-            if (Input.anyKeyDown)
+            if (Input.anyKeyDown && !stun)
             {
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))) // for each virtual key
                 {
@@ -172,8 +175,9 @@ public class TrainingIrregular : MonoBehaviour
                     if (Input.GetKeyDown(vKey) && inputID < stageBoard.keyBools.Count && inputID >= 0) //if its a valid input (can be expanded upon)
                     {
                         // if the player enters a correct key (and is able to because the slime isn't stunned)
-                        if (inputString == sortedArray[tracker] && !stun)
+                        if (inputString == sortedArray[tracker])
                         {
+                            gameSoundManager.Step();
                             tracker++;
                             playerInput.text += inputString.ToUpper();
                             slime.assignPos(stageBoard.keySprites[inputID].transform.position);
@@ -182,6 +186,7 @@ public class TrainingIrregular : MonoBehaviour
                         // if the player enters an incorrect key
                         else
                         {
+                            gameSoundManager.Wrong();
                             if (!stun)
                             {
                                 GameManager.Instance.SubtractScore(Random.Range(0.25f, 0.75f));
@@ -205,6 +210,7 @@ public class TrainingIrregular : MonoBehaviour
                 {
                     slime.assignPos(leftStartPosition);
                 }
+                gameSoundManager.Win();
                 GameManager.Instance.AddScore(Random.Range(1f, 1.5f));
                 stun = false;
                 leftToRight = !leftToRight;
@@ -216,8 +222,6 @@ public class TrainingIrregular : MonoBehaviour
                 // if 6 rounds have been completed, go to phase 3
                 if (rounds == 6)
                 {
-                    timer.startTicking = false;
-                    timer.timerText.text = "";
                     audienceSentence.text = "You have successfully completed this tutorial!";
                     playerInput.text = "Great job!";
                     phase = 3;
@@ -319,6 +323,7 @@ public class TrainingIrregular : MonoBehaviour
         isTyping = true;
         cancelTyping = false;
         string currentTextLine = dialgueLines[currentLine];
+        textScrollSoundManager.Scroll();
         while (isTyping && !cancelTyping && (index < currentTextLine.Length - 1))
         {
             tutorialText.text += currentTextLine[index];
@@ -326,6 +331,7 @@ public class TrainingIrregular : MonoBehaviour
             yield return new WaitForSeconds(typeSpeed);
         }
         cancelTyping = true;
+        textScrollSoundManager.Stop();
         tutorialText.text = dialgueLines[currentLine];
     }
 }

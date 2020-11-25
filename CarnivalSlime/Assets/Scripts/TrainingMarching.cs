@@ -14,6 +14,10 @@ public class TrainingMarching : MonoBehaviour
     public KeyboardSystem stageBoard;
     public MarchingTimeManagement timer;
 
+    public GameJuiceAudio gameSoundManager;
+    public TimeAudio timeSoundManager;
+    public TextScrollSoundManager textScrollSoundManager;
+
     // tutorial exclusives
     public TextAsset textFile;
     public List<string> dialgueLines;
@@ -104,7 +108,6 @@ public class TrainingMarching : MonoBehaviour
                 Scroll();
                 goText = true;
             }
-
             if (Input.GetKeyDown(KeyCode.Space) && currentLine == endLine && cancelTyping && tutorialText.text == dialgueLines[currentLine])
             {
                 tutorialSpeech.SetActive(false);
@@ -151,6 +154,7 @@ public class TrainingMarching : MonoBehaviour
             // if the player correctly types in all of the letters
             if (tracker == -1)
             {
+                gameSoundManager.Win();
                 if (maxLengthLetters != numberOfSlimes)
                 {
                     maxLengthLetters++;
@@ -193,11 +197,16 @@ public class TrainingMarching : MonoBehaviour
                             slimes[slimeTracker].assignPos(stageBoard.keySprites[inputID].transform.position);
                             slimeTracker++;
                             tracker--;
+                            if (tracker != -1)
+                            {
+                                gameSoundManager.Step();
+                            }
                         }
 
                         // if the player enters an incorrect key
                         else
                         {
+                            gameSoundManager.Wrong();
                             GameManager.Instance.SubtractScore(Random.Range(0.25f, 1f));
                             GoBack();
                         }
@@ -207,8 +216,6 @@ public class TrainingMarching : MonoBehaviour
         }
         else if (phase == 3)
         {
-            timer.startTicking = false;
-            timer.timerText.text = "";
             audienceSentence.text = "Great job!";
             playerInput.text = "You have successfully completed the minigame!";
             loadNextScene = LoadScene();
@@ -230,17 +237,21 @@ public class TrainingMarching : MonoBehaviour
 
     private IEnumerator CountDown()
     {
-        timer.timerText.text = "";
-        timer.startTicking = false;
+        //timer.timerText.text = "";
+        //timer.startTicking = false;
         countingDown = true;
+        timeSoundManager.CountDown();
         audienceSentence.text = "3";
         yield return new WaitForSeconds(1f);
+        timeSoundManager.CountDown();
         audienceSentence.text = "2";
         yield return new WaitForSeconds(1f);
+        timeSoundManager.CountDown();
         audienceSentence.text = "1";
         yield return new WaitForSeconds(1f);
         phase = 1;
-        timer.timerText.text = "" + timer.timerLevelDisplay;
+        timeSoundManager.Go();
+        //timer.timerText.text = "" + timer.timerLevelDisplay;
         countingDown = false;
     }
 
@@ -270,6 +281,7 @@ public class TrainingMarching : MonoBehaviour
         isTyping = true;
         cancelTyping = false;
         string currentTextLine = dialgueLines[currentLine];
+        textScrollSoundManager.Scroll();
         while (isTyping && !cancelTyping && (index < currentTextLine.Length - 1))
         {
             tutorialText.text += currentTextLine[index];
@@ -277,6 +289,7 @@ public class TrainingMarching : MonoBehaviour
             yield return new WaitForSeconds(typeSpeed);
         }
         cancelTyping = true;
+        textScrollSoundManager.Stop();
         tutorialText.text = dialgueLines[currentLine];
     }
 }
