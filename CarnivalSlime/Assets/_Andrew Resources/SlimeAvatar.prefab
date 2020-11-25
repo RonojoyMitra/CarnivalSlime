@@ -532,6 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walking: 0
   idling: 1
+  anim: {fileID: 0}
 --- !u!1 &6424520289692817056
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424520289692817059}
+  - component: {fileID: 3679332740474164163}
   m_Layer: 0
   m_Name: SlimeAvatar
   m_TagString: Untagged
@@ -563,6 +565,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3679332740474164163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6424520289692817056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92e5624e04f4434aafb9366ffb86bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  happyEffect: {fileID: 0}
+  sadEffect: {fileID: 0}
+  effect: {fileID: 2989280497462919728, guid: 0b707bfa96b01a34cbda9c62d2fdb425, type: 3}
 --- !u!1 &6794259831041474847
 GameObject:
   m_ObjectHideFlags: 0
