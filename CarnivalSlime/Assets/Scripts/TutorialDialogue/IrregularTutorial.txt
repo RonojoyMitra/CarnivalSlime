@@ -1,12 +1,15 @@
-This is the tutorial for the IRREGULAR portion of the performance.
+Today is your big day, slime! 
+But before we get to the actual show, let's do some rehearsal first.
+This is a rehearsal for the IRREGULAR minigame in the performance.
 In this game, you will type words in order of where the letters appear on the keyboard. 
 You will either type these letters out from left to right or right to left. 
 If you were to type the word "WORD" from left to right, for example... 
-You would type it in this order: "WDRO"
+You would type it in this order: "WDRO".
 This is because the letters of "WORD" appear in the order "W", "D", "R", "O" on your keyboard.
 Likewise, if you were to go from right to left, you would type "ORDW".
-Each day will require you to "irregularly" type out these words 6 total times. 
-You'd normally have to type these words under a time constraint...
-But during this tutorial section, don't worry about it!
+When you make a mistake, you will be frozen in time for a couple of seconds.
+This is dangerous because you'd normally have to type these words under a time constraint.
+Luckily, during this rehearsal, you won't be rushed with time.
 Just get used to the mechanics and make sure you're ready for performance day.
+Each day will require you to "irregularly" type out these words 6 total times. 
 Good luck and don't mess up!

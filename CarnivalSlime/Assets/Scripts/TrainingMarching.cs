@@ -34,6 +34,8 @@ public class TrainingMarching : MonoBehaviour
     public bool goText;    //if coroutine is happening
 
     public bool finishedTalking;
+
+    public Animator speechBubble;
     // tutorial exclusives
 
     public TestMarkerScript slime1;
@@ -96,6 +98,7 @@ public class TrainingMarching : MonoBehaviour
         typeSpeed = 0.03f;
         isTyping = false;
         cancelTyping = false;
+        endLine = dialgueLines.Count - 1;
     }
 
     // Update is called once per frame
@@ -110,7 +113,7 @@ public class TrainingMarching : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space) && currentLine == endLine && cancelTyping && tutorialText.text == dialgueLines[currentLine])
             {
-                tutorialSpeech.SetActive(false);
+                speechBubble.SetTrigger("Close");
                 countDownCoroutine = CountDown();
                 StartCoroutine(countDownCoroutine);
                 finishedTalking = true;

@@ -27,6 +27,8 @@ public class TrainingIrregular : MonoBehaviour
     public bool isTyping;       //used for checking if textScroll is happening
     public bool cancelTyping;   //used to check if player wants to cancel the scroll
     public bool goText;    //if coroutine is happening
+
+    public Animator speechBubble;
     // tutorial exclusives
 
     public Vector3 leftStartPosition;
@@ -107,6 +109,7 @@ public class TrainingIrregular : MonoBehaviour
 
         // tutorial exclusives
         dialgueLines = new List<string>(textFile.text.Split('\n'));
+        endLine = dialgueLines.Count - 1;
         currentLine = 0;
         tutorialText.text = dialgueLines[currentLine];
         typeSpeed = 0.03f;
@@ -128,8 +131,8 @@ public class TrainingIrregular : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space) && currentLine == endLine && cancelTyping && tutorialText.text == dialgueLines[currentLine])
             {
+                speechBubble.SetTrigger("Close");
                 phase = 1;
-                tutorialSpeech.SetActive(false);
             }
             else if (Input.GetKeyDown(KeyCode.Space) && !cancelTyping)
             {

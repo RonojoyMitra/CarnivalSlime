@@ -1,4 +1,5 @@
-This is the tutorial for the MARCHING portion of the performance.
+Onto the next minigame! 
+This is a rehearsal for the MARCHING minigame in the performance.
 In this game, you will have to redirect each of the many slimes on stage to a letter.
 The slimes are standing in a line, and each slime in the line must follow the slime in front of them. 
 The slime in the very first position will always be given a new letter each round.
