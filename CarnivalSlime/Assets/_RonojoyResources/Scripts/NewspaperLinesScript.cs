@@ -61,7 +61,7 @@ public class NewspaperLinesScript : MonoBehaviour
         int day = GameManager.Instance.day;
         if (day == 1)
         {
-            Headline2.text = "Monday, March 15th 1853";
+            Headline2.text = "On Opening Night";
         }
         if (day == 2)
         {
