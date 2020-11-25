@@ -1112,12 +1112,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainLoopAudioSource: {fileID: 358082730}
   secondaryLoopAudioSource: {fileID: 358082731}
-  crowdMurmur: {fileID: 8300000, guid: fd8672357424a734f9cfd9c5fdf59f9a, type: 3}
+  crowdMurmur: {fileID: 8300000, guid: 058d826412e764679b3dc2689e2c9312, type: 3}
   crowdQuietens: {fileID: 8300000, guid: 5c3fee19d5464d04a9776ec4a491228b, type: 3}
-  crowdClap: {fileID: 8300000, guid: 166461994a694a349992534fb2b55f59, type: 3}
-  crowdClapEnd: {fileID: 8300000, guid: 2795b5eb47298f8479fad033ddfd93b0, type: 3}
-  crowdLaugh: {fileID: 8300000, guid: de6f11c8b89f8ad4d8605154753e3966, type: 3}
-  crowdBoo: {fileID: 8300000, guid: 79242aa743967904c94584d84269a874, type: 3}
+  crowdClap: {fileID: 8300000, guid: 3d03a47da7a474ad6a992fe96d545abb, type: 3}
+  crowdClapEnd: {fileID: 8300000, guid: 7d2b75f6633f64b2cb620967e45951ea, type: 3}
+  crowdLaugh: {fileID: 8300000, guid: 78a523a62e01a4d779db47440e0d32c1, type: 3}
+  crowdBoo: {fileID: 8300000, guid: 49fa39025d8e348d79ad51e501f7694b, type: 3}
 --- !u!4 &358082729
 Transform:
   m_ObjectHideFlags: 0
@@ -1142,7 +1142,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fd8672357424a734f9cfd9c5fdf59f9a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 058d826412e764679b3dc2689e2c9312, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

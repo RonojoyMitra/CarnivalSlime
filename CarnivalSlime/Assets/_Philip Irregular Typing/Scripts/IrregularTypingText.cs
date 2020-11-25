@@ -147,7 +147,6 @@ public class IrregularTypingText : MonoBehaviour
                 phase = 1;
                 slime.assignPos(leftStartPosition);
                 timer.startTicking = true;
-                Debug.Log("hey");
                 soundManager.ShowStarting();
             }
         }

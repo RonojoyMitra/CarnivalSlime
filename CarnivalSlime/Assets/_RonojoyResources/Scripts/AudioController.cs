@@ -33,6 +33,7 @@ public class AudioController : MonoBehaviour
     public void ShowStarting()
     {
         mainLoopAudioSource.Stop();
+        mainLoopAudioSource.clip = null;
         secondaryLoopAudioSource.PlayOneShot(crowdQuietens);
     }
 
@@ -44,6 +45,7 @@ public class AudioController : MonoBehaviour
     public void CrowdClapEnd()
     {
         secondaryLoopAudioSource.PlayOneShot(crowdClapEnd);
+        mainLoopAudioSource.clip = crowdMurmur;
         mainLoopAudioSource.Play();
     }
 
