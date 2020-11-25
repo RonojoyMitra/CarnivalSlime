@@ -24,11 +24,13 @@ public class NewspaperLinesScript : MonoBehaviour
         SetDate();
         SetHeadline1();
         SetHeadline2();
+        day = GameManager.Instance.day;
+        score = GameManager.Instance.score;
     }
 
     void SetDate()
     {
-        int day = GameManager.Instance.day;
+        //int day = GameManager.Instance.day;
         if (day == 1)
         {
             Date.text = "Monday, March 15th 1853";
@@ -53,31 +55,34 @@ public class NewspaperLinesScript : MonoBehaviour
 
     void SetHeadline1()
     {
-        float score = GameManager.Instance.score;
-
-        if (score > 9f)
-        {
-            Headline1.text = "Moving Slime wows";
-        }
-        if (score > 7f)
-        {
-            Headline1.text = "Living Slime entertains";
-        }
-        if (score > 5f)
-        {
-            Headline1.text = "Barnum's 'Slime' falls flat";
-        }
-        if (score > 3f)
+        //float score = GameManager.Instance.score;
+        if (score > 0f)
         {
             Headline1.text = "Barnum's 'Slime' Flops";
         }
-
-         
+        if (score > 3f)
+        {
+            Headline1.text = "Barnum's 'Slime' falls flat";
+            Headline1.fontSize = 13;
+        }
+        if (score > 5f)
+        {
+            Headline1.text = "Living Slime pleases";
+        }
+        if (score > 6f)
+        {
+            Headline1.text = "Marching Slime entertains";
+            Headline1.fontSize = 13;
+        }
+        if (score > 8.8f)
+        {
+            Headline1.text = "Moving Slime wows";
+        }
     }
 
     void SetHeadline2()
     {
-        int day = GameManager.Instance.day;
+        //int day = GameManager.Instance.day;
         if (day == 1)
         {
             Headline2.text = "On Opening Night";
@@ -89,10 +94,12 @@ public class NewspaperLinesScript : MonoBehaviour
         if (day == 3)
         {
             Headline2.text = "in wednesday's performance";
+            Headline2.fontSize = 12;
         }
         if (day == 4)
         {
             Headline2.text = "on its penultimate show";
+            Headline2.fontSize = 14;
         }
         if (day == 5)
         {
