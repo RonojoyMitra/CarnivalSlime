@@ -1,7 +1,70 @@
 fileFormatVersion: 2
 guid: 065ea01b1f747db45a77d8ca88011953
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5887703336008782197
+    second: barnumsprites_0
+  - first:
+      213: 8685729360912145601
+    second: barnumsprites_1
+  - first:
+      213: -6634890380367804229
+    second: barnumsprites_2
+  - first:
+      213: 1897279796562767194
+    second: barnumsprites_3
+  - first:
+      213: -7244162989333398201
+    second: barnumsprites_4
+  - first:
+      213: 6019642555788094808
+    second: barnumsprites_5
+  - first:
+      213: -1321109386086481242
+    second: barnumsprites_6
+  - first:
+      213: -8579517587465539216
+    second: barnumsprites_7
+  - first:
+      213: 6056741468331109295
+    second: barnumsprites_8
+  - first:
+      213: -6474434902157843088
+    second: barnumsprites_9
+  - first:
+      213: -3393556152080071189
+    second: barnumsprites_10
+  - first:
+      213: -2723495295284712031
+    second: barnumsprites_11
+  - first:
+      213: -5675163331925682049
+    second: barnumsprites_12
+  - first:
+      213: 775998682774114175
+    second: barnumsprites_13
+  - first:
+      213: -4552445853660781612
+    second: barnumsprites_14
+  - first:
+      213: -680022963596347093
+    second: barnumsprites_15
+  - first:
+      213: -4755346745212350368
+    second: barnumsprites_16
+  - first:
+      213: 1252935778071119857
+    second: barnumsprites_17
+  - first:
+      213: 1564601442471296028
+    second: barnumsprites_18
+  - first:
+      213: -454893635769425120
+    second: barnumsprites_19
+  - first:
+      213: 3663246261504550735
+    second: barnumsprites_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -31,7 +94,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: 2
     mipBias: -100
     wrapU: 1
@@ -40,7 +103,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -64,7 +127,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -76,7 +139,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,7 +187,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -133,7 +196,259 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: barnumsprites_0
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 4664
+        width: 450
+        height: 1266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8e6052a20daa4ea0800000000000000
+      internalID: -5887703336008782197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barnumsprites_4
+      rect:
+        serializedVersion: 2
+        x: 1814
+        y: 4633
+        width: 897
+        height: 1260
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74d30c57420977b90800000000000000
+      internalID: -7244162989333398201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barnumsprites_5
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 4668
+        width: 846
+        height: 1251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85de294d2011a8350800000000000000
+      internalID: 6019642555788094808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barnumsprites_6
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 3218
+        width: 564
+        height: 1265
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a281ec430a7aade0800000000000000
+      internalID: -1321109386086481242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barnumsprites_7
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 3217
+        width: 555
+        height: 1271
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07176eed53e6fe880800000000000000
+      internalID: -8579517587465539216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barnumsprites_9
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 3205
+        width: 552
+        height: 1271
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 075ad7f62cf2626a0800000000000000
+      internalID: -6474434902157843088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barnumsprites_15
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1763
+        width: 449
+        height: 1271
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b293bbfa7b21096f0800000000000000
+      internalID: -680022963596347093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barnumsprites_16
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 1763
+        width: 448
+        height: 1271
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060dec3845d910eb0800000000000000
+      internalID: -4755346745212350368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barnumsprites_17
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 1749
+        width: 447
+        height: 1271
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f78e4aa372536110800000000000000
+      internalID: 1252935778071119857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barnumsprites_18
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 321
+        width: 515
+        height: 1271
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1cb099e8b496b510800000000000000
+      internalID: 1564601442471296028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barnumsprites_19
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 314
+        width: 518
+        height: 1271
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 023a06df5a4efa9f0800000000000000
+      internalID: -454893635769425120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barnumsprites_20
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 309
+        width: 528
+        height: 1267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f47a1cde01776d230800000000000000
+      internalID: 3663246261504550735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
