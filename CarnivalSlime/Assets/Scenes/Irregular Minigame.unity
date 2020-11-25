@@ -8710,6 +8710,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8dde577f3b0a1154aabc5f110a21cb43, type: 2}
+    - target: {fileID: 3679332740474164163, guid: 59a2519cabcc9f140a2b16eb1c8c2a94,
+        type: 3}
+      propertyPath: happyEffect
+      value: 
+      objectReference: {fileID: 6120671361122809635, guid: ed1b532687dca7c43b5ba9ec5f380696,
+        type: 3}
+    - target: {fileID: 3679332740474164163, guid: 59a2519cabcc9f140a2b16eb1c8c2a94,
+        type: 3}
+      propertyPath: sadEffect
+      value: 
+      objectReference: {fileID: 8824016913692589989, guid: ed1b532687dca7c43b5ba9ec5f380696,
+        type: 3}
     - target: {fileID: 6190500036160102973, guid: 59a2519cabcc9f140a2b16eb1c8c2a94,
         type: 3}
       propertyPath: anim
