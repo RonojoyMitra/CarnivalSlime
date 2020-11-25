@@ -12,6 +12,7 @@ public class IrregularTypingText : MonoBehaviour
     public IrregularTimeManagement timer;
 
     public AudioController soundManager;
+    public GameJuiceAudio gameSoundManager;
 
     // starting (offscreen) positions for the slime at the beginning of the trick
     public Vector3 leftStartPosition;
@@ -74,6 +75,7 @@ public class IrregularTypingText : MonoBehaviour
 
     void Start()
     {
+        MusicManager.Instance.StopMusic();
         day = GameManager.Instance.day;
         randomLine = Random.Range(0, 12);
         if (day == 0 || day == 1)
@@ -147,7 +149,6 @@ public class IrregularTypingText : MonoBehaviour
                 phase = 1;
                 slime.assignPos(leftStartPosition);
                 timer.startTicking = true;
-                Debug.Log("hey");
                 soundManager.ShowStarting();
             }
         }
@@ -176,7 +177,7 @@ public class IrregularTypingText : MonoBehaviour
         else if (phase == 2)
         {
             // if the player enters a key
-            if (Input.anyKeyDown)
+            if (Input.anyKeyDown && !stun)
             {
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))) // for each virtual key
                 {
@@ -186,8 +187,9 @@ public class IrregularTypingText : MonoBehaviour
                     if (Input.GetKeyDown(vKey) && inputID < stageBoard.keyBools.Count && inputID >= 0) //if its a valid input (can be expanded upon)
                     {
                         // if the player enters a correct key (and is able to because the slime isn't stunned)
-                        if (inputString == sortedArray[tracker] && !stun)
+                        if (inputString == sortedArray[tracker])
                         {
+                            gameSoundManager.Step();
                             tracker++;
                             playerInput.text += inputString.ToUpper();
                             slime.assignPos(stageBoard.keySprites[inputID].transform.position);
@@ -196,6 +198,7 @@ public class IrregularTypingText : MonoBehaviour
                         // if the player enters an incorrect key
                         else
                         {
+                            gameSoundManager.Wrong();
                             if (!stun)
                             {
                                 GameManager.Instance.SubtractScore(Random.Range(0.25f, 0.75f));
@@ -219,6 +222,7 @@ public class IrregularTypingText : MonoBehaviour
                 {
                     slime.assignPos(leftStartPosition);
                 }
+                gameSoundManager.Win();
                 GameManager.Instance.AddScore(Random.Range(1f, 1.5f));
                 stun = false;
                 leftToRight = !leftToRight;
@@ -239,7 +243,15 @@ public class IrregularTypingText : MonoBehaviour
                 }
                 else
                 {
-                    soundManager.CrowdClap();
+                    float randomAudienceReaction = Random.Range(0f, 1f);
+                    if (randomAudienceReaction <= 0.5f)
+                    {
+                        soundManager.CrowdClap();
+                    }
+                    else
+                    {
+                        soundManager.CrowdLaugh();
+                    }
                 }
             }
 

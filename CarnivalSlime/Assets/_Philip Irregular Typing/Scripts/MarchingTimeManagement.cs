@@ -5,6 +5,8 @@ using TMPro;
 
 public class MarchingTimeManagement : MonoBehaviour
 {
+    public TimeAudio timeSoundManager;
+
     public TextMeshPro timerText;
 
     // tracks what day in the game it is
@@ -63,6 +65,7 @@ public class MarchingTimeManagement : MonoBehaviour
                 timerFloat = 0f;
                 if (timerDisplay > 0)
                 {
+                    timeSoundManager.Tick();
                     timerDisplay--;
                     timerText.text = "" + timerDisplay;
                 }
