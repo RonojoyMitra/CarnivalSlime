@@ -18,7 +18,9 @@ public class EffectFade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, endPos+Vector3.up*.1f, Time.deltaTime * 3);
+        transform.LookAt(Camera.main.transform);
+
+        transform.position = Vector3.Lerp(transform.position, endPos+Vector3.up*.1f, Time.deltaTime * 3); //*3 is speed
         transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one*3,Time.deltaTime * 3.3f);
         GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, new Color(1,1,1,0), Time.deltaTime * 3.3f);
         if (transform.position.y>endPos.y)
