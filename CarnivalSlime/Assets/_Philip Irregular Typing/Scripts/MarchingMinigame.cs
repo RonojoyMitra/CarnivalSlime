@@ -26,6 +26,11 @@ public class MarchingMinigame : MonoBehaviour
     public TestMarkerScript slime6;
     public TestMarkerScript slime7;
 
+    public GameObject Face4;
+    public GameObject Face5;
+    public GameObject Face6;
+    public GameObject Face7;
+
     public Vector3 waitPosition1;
     public Vector3 waitPosition2;
     public Vector3 waitPosition3;
@@ -81,6 +86,10 @@ public class MarchingMinigame : MonoBehaviour
             previousPositions[0] = waitPosition1;
             previousPositions[1] = waitPosition2;
             previousPositions[2] = waitPosition3;
+            Face4.SetActive(false);
+            Face5.SetActive(false);
+            Face6.SetActive(false);
+            Face7.SetActive(false);
         }
         else if (day == 2)
         {
@@ -97,6 +106,9 @@ public class MarchingMinigame : MonoBehaviour
             previousPositions[1] = waitPosition2;
             previousPositions[2] = waitPosition3;
             previousPositions[3] = waitPosition4;
+            Face5.SetActive(false);
+            Face6.SetActive(false);
+            Face7.SetActive(false);
         }
         else if (day == 3)
         {
@@ -116,6 +128,8 @@ public class MarchingMinigame : MonoBehaviour
             previousPositions[2] = waitPosition3;
             previousPositions[3] = waitPosition4;
             previousPositions[4] = waitPosition4;
+            Face6.SetActive(false);
+            Face7.SetActive(false);
         }
         else if (day == 4)
         {
@@ -138,6 +152,7 @@ public class MarchingMinigame : MonoBehaviour
             previousPositions[3] = waitPosition4;
             previousPositions[4] = waitPosition4;
             previousPositions[5] = waitPosition4;
+            Face7.SetActive(false);
         }
         else if (day == 5)
         {
