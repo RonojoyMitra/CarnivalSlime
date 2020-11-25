@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class HoopsMiniGame : MonoBehaviour
 {
+    public TextMeshPro audienceSentence; // top tmpro
+
     public KeyboardSystem Board;
 
     public AudioController soundManager;
@@ -53,6 +55,7 @@ public class HoopsMiniGame : MonoBehaviour
         stagingKey = Random.Range(0,26);
         stagingString = Board.alphabet[stagingKey];
         Debug.Log($"Go To Key {Board.alphabet[stagingKey]}");
+        audienceSentence.text = $"Go To Key {Board.alphabet[stagingKey]}";
         GameObject.Find("DIST").GetComponent<TextMeshPro>().text = $"Go To Key {Board.alphabet[stagingKey]}";
 
         newPos = new Vector3(Marker.position.x, 0, Marker.position.z);
@@ -153,9 +156,10 @@ public class HoopsMiniGame : MonoBehaviour
                     stagingKey = Random.Range(0, 26);
                     stagingString = Board.alphabet[stagingKey];
                     //Debug.Log($"Go To Key {Board.alphabet[stagingKey]}");
+                    audienceSentence.text = $"Go To Key {Board.alphabet[stagingKey]}";
                     GameObject.Find("DIST").GetComponent<TextMeshPro>().text = $"Go To Key {Board.alphabet[stagingKey]}";
-                phase++;
-                roundStage = 0;
+                    phase++;
+                    roundStage = 0;
             } 
         }
         
@@ -234,6 +238,13 @@ public class HoopsMiniGame : MonoBehaviour
             soundManager.CrowdClapEnd();
         }
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("ScoreReview", LoadSceneMode.Single);
+        if (day != 0)
+        {
+            SceneManager.LoadScene("ScoreReview", LoadSceneMode.Single);
+        }
+        else
+        {
+            SceneManager.LoadScene("IntroCutscene", LoadSceneMode.Single);
+        }
     }
 }
