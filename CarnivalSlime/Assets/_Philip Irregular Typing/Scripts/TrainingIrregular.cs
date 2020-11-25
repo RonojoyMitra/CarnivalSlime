@@ -35,6 +35,7 @@ public class TrainingIrregular : MonoBehaviour
     public Vector3 rightStartPosition;
 
     public TestMarkerScript slime;
+    public SlimeStep step;
     public TextMeshPro audienceSentence; // top tmpro
     public TextMeshPro playerInput; // bottom tmpro--will display the correct letters that the player inputs
 
@@ -106,6 +107,7 @@ public class TrainingIrregular : MonoBehaviour
         keyboardAlphabetNumbers.Add("P", 25);
 
         slime.assignPos(leftStartPosition);
+        step.Squish();
 
         // tutorial exclusives
         dialgueLines = new List<string>(textFile.text.Split('\n'));
@@ -184,6 +186,7 @@ public class TrainingIrregular : MonoBehaviour
                             tracker++;
                             playerInput.text += inputString.ToUpper();
                             slime.assignPos(stageBoard.keySprites[inputID].transform.position);
+                            step.Squish();
                         }
 
                         // if the player enters an incorrect key
@@ -208,10 +211,12 @@ public class TrainingIrregular : MonoBehaviour
                 if (leftToRight)
                 {
                     slime.assignPos(rightStartPosition);
+                    step.Squish();
                 }
                 else
                 {
                     slime.assignPos(leftStartPosition);
+                    step.Squish();
                 }
                 gameSoundManager.Win();
                 GameManager.Instance.AddScore(Random.Range(1f, 1.5f));
@@ -236,6 +241,7 @@ public class TrainingIrregular : MonoBehaviour
         else if (phase == 3)
         {
             slime.assignPos(new Vector3(0, 0, 0));
+            step.Squish();
             loadNextScene = LoadScene();
             StartCoroutine(loadNextScene);
             phase = 4;
