@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2388,10 +2388,10 @@ MonoBehaviour:
   slime5: {fileID: 1155986612}
   slime6: {fileID: 1164863713}
   slime7: {fileID: 1864610018}
-  Face4: {fileID: 0}
-  Face5: {fileID: 0}
-  Face6: {fileID: 0}
-  Face7: {fileID: 0}
+  Face4: {fileID: 937189552}
+  Face5: {fileID: 1668477581}
+  Face6: {fileID: 1026200195}
+  Face7: {fileID: 1162922018}
   waitPosition1: {x: -12.27, y: 0, z: 0}
   waitPosition2: {x: -12.27, y: 0, z: -1.3}
   waitPosition3: {x: -12.27, y: 0, z: -3}
@@ -4813,6 +4813,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &937189552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5103283295825038586, guid: 472b7b7d9d5bc264a8b4141099f730ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 1751712269}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &940790902
 GameObject:
   m_ObjectHideFlags: 0
@@ -5494,6 +5500,12 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &1026200195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5103283295825038586, guid: 472b7b7d9d5bc264a8b4141099f730ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 809719403}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1036907432
 GameObject:
   m_ObjectHideFlags: 0
@@ -5793,6 +5805,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1162922018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5103283295825038586, guid: 472b7b7d9d5bc264a8b4141099f730ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 813075325}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1164863712
 GameObject:
   m_ObjectHideFlags: 0
@@ -9151,6 +9169,12 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &1668477581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5103283295825038586, guid: 472b7b7d9d5bc264a8b4141099f730ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 1007579146}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1720608065
 GameObject:
   m_ObjectHideFlags: 0

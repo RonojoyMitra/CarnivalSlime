@@ -296,6 +296,18 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 73991754}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &73991757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6190500036160102973, guid: 59a2519cabcc9f140a2b16eb1c8c2a94,
+    type: 3}
+  m_PrefabInstance: {fileID: 73991754}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82e01857a1581a47ab8169cb025ac2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &74357013
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &355507226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3286,6 +3298,52 @@ Transform:
   m_Father: {fileID: 27694165}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &872072715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 872072717}
+  - component: {fileID: 872072716}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &872072716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872072715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b87abc07ba3b94232a772a7d79f54e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  day: 0
+  breakNumber: 0
+  score: 0
+--- !u!4 &872072717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872072715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.037464, y: -32.85126, z: 17.421387}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &873107201
 GameObject:
   m_ObjectHideFlags: 0
@@ -7083,6 +7141,7 @@ GameObject:
   - component: {fileID: 1617115067}
   - component: {fileID: 1617115068}
   - component: {fileID: 1617115070}
+  - component: {fileID: 1617115071}
   m_Layer: 0
   m_Name: StageBoard
   m_TagString: Untagged
@@ -7227,7 +7286,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617115065}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90fdcfa93b7c87649a6b546536e43025, type: 3}
   m_Name: 
@@ -7243,10 +7302,10 @@ MonoBehaviour:
   phase: 0
   day: 0
   Marker: {fileID: 1752504729}
-  Slime: {fileID: 1752504729}
-  slimeAnim: {fileID: 0}
+  Slime: {fileID: 73991755}
+  slimeAnim: {fileID: 73991757}
   slimeForward: {x: 0, y: 0, z: 0}
-  phases: 0
+  phases: 3
   jump:
     serializedVersion: 2
     m_Curve:
@@ -7272,6 +7331,29 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   pole: {fileID: 1476948586}
+--- !u!114 &1617115071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617115065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4d18f8fa0046564e8ed2f70bada96ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textFile: {fileID: 4900000, guid: 4eb929016dbcae847a936d4bfdbc2ca5, type: 3}
+  dialgueLines: []
+  currentLine: 0
+  endLine: 0
+  tutorialSpeech: {fileID: 1182891912}
+  tutorialText: {fileID: 1083421949}
+  typeSpeed: 0
+  isTyping: 0
+  cancelTyping: 0
+  goText: 0
+  finishedTalking: 0
 --- !u!1 &1626496015
 GameObject:
   m_ObjectHideFlags: 0

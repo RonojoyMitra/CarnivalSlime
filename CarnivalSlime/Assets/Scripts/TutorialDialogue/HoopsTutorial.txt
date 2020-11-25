@@ -1,10 +1,12 @@
-This is the tutorial for the LEAPING portion of the performance.
-In this game, you will be directed to a specifc key, then instructed to jump in a certain direction and magnitude.
-When moving to the spcific key from which to jump, you will have to press keys tangent to the one you are on.
-Fore example, to get from the key 'W' to the key 'N' the order might look like...
-'W', 'S', 'D', 'F', 'G', 'B', 'N'
+This will be the final minigame of the performance!
+This is a rehearsal for the LEAPING minigame in the performance.
+In this game, you will be directed to a specifc key.
+Then, you will be instructed to jump in a certain direction and magnitude.
+When moving to the spcific key from which to jump, press keys tangent to the one you are on.
+For example, to get from the key 'W' to the key 'N' the order might look like...
+"W", "S", "D", "F", "G", "B", "N" !
 After this, the arrow will point in a direction and display a number.
-The direction id the direction you must jump, and the number is the number of keys you must travel.
-It's okay to estimate if the key is on a diagonal, go with your gut!
-finish this three times to continue. 
-good luck!
+The direction is the direction you must jump, and the number is the number of keys you must travel.
+It's okay to estimate if the key is on a diagonal--go with your gut!
+Finish this three times to continue. 
+Good luck!

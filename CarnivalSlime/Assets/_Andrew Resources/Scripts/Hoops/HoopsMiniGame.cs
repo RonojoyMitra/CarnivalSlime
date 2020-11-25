@@ -149,6 +149,7 @@ public class HoopsMiniGame : MonoBehaviour
 
         if (phase == phases)
         {
+            Debug.Log("HELLOOOOO");
             loadNextScene = LoadScene();
             StartCoroutine(loadNextScene);
         }
