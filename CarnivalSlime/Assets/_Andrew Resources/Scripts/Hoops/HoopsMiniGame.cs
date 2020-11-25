@@ -219,6 +219,7 @@ public class HoopsMiniGame : MonoBehaviour
         dist = Mathf.Round(dist);
         dist -= 1;
         dist = Mathf.Clamp(dist,1,9);
+        audienceSentence.text = $"Go To Key {Board.alphabet[stagingKey]}";
         GameObject.Find("DIST").GetComponent<TextMeshPro>().text = dist.ToString();
         //Debug.Log($"The distance between {Board.alphabet[occupiedKey]} and {Board.alphabet[targetKey]} is {dist}");
         Debug.Log($"The distance between {Board.alphabet[occupiedKey]} and ??? is {dist}");
