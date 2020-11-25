@@ -33,6 +33,8 @@ public class HoopsMiniGame : MonoBehaviour
     public SlimeAnimationController slimeAnim;
     public Vector3 slimeForward;
 
+    public float phases;
+
     void Start()
     {
         // adjust difficulty based on this int (it'll be 0 for training, and 1,2,3,4,5 for the performance days
@@ -145,7 +147,7 @@ public class HoopsMiniGame : MonoBehaviour
             Slime.localPosition = new Vector3(0, -.84f, 0);
         }
 
-        if (phase == 10)
+        if (phase == phases)
         {
             loadNextScene = LoadScene();
             StartCoroutine(loadNextScene);
