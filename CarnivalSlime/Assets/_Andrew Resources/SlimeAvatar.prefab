@@ -543,6 +543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6424520289692817059}
   - component: {fileID: 3679332740474164163}
+  - component: {fileID: 974350104361782001}
   m_Layer: 0
   m_Name: SlimeAvatar
   m_TagString: Untagged
@@ -580,6 +581,18 @@ MonoBehaviour:
   happyEffect: {fileID: 0}
   sadEffect: {fileID: 0}
   effect: {fileID: 2989280497462919728, guid: 0b707bfa96b01a34cbda9c62d2fdb425, type: 3}
+--- !u!114 &974350104361782001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6424520289692817056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d906643822755244936b6a9d63811f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6794259831041474847
 GameObject:
   m_ObjectHideFlags: 0
