@@ -18,14 +18,14 @@ public class Cutscene2Manager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            SceneManager.LoadScene("Irregular Minigame", LoadSceneMode.Single);
+            SceneManager.LoadScene("TransitionScene", LoadSceneMode.Single);
             GameManager.Instance.day = 1;
         }
     }
 
     public void LoadMinigame()
     {
-        SceneManager.LoadScene("Irregular Minigame", LoadSceneMode.Single);
+        SceneManager.LoadScene("TransitionScene", LoadSceneMode.Single);
         GameManager.Instance.day = 1;
     }
 }

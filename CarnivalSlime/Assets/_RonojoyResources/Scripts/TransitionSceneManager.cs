@@ -16,7 +16,7 @@ public class TransitionSceneManager : MonoBehaviour
     {
             if (Input.GetKey(KeyCode.E) && GameManager.Instance.day <= 5)
             {
-                SceneManager.LoadScene("IrregularMinigame", LoadSceneMode.Single);
+                SceneManager.LoadScene("Irregular Minigame", LoadSceneMode.Single);
             }  
     }
 }
