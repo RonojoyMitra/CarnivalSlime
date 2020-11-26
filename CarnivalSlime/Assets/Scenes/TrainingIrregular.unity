@@ -766,8 +766,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a1db175c3251b044905afc0025745e4, type: 2}
-  m_sharedMaterial: {fileID: -9001201174131459986, guid: 8a1db175c3251b044905afc0025745e4,
+  m_fontAsset: {fileID: 11400000, guid: f88691dedf3ce4a899980b3bf9e1e661, type: 2}
+  m_sharedMaterial: {fileID: 1741771794193855986, guid: f88691dedf3ce4a899980b3bf9e1e661,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -862,7 +862,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -9001201174131459986, guid: 8a1db175c3251b044905afc0025745e4, type: 2}
+  - {fileID: 1741771794193855986, guid: f88691dedf3ce4a899980b3bf9e1e661, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1727,7 +1727,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -36, y: 17}
+  m_AnchoredPosition: {x: -36, y: 22}
   m_SizeDelta: {x: 725.8176, y: 63.732544}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &435948712
@@ -1749,7 +1749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hey this is a tutorial text. '
+  m_text: Hey this is a tutorial text.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1cd119e60ae4d4c6590b04e2ca3ab7d1, type: 2}
   m_sharedMaterial: {fileID: -4334919425602543415, guid: 1cd119e60ae4d4c6590b04e2ca3ab7d1,
@@ -1813,7 +1813,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 144.10735, y: 0, z: 28.336092, w: -6.998513}
+  m_margin: {x: 144.10735, y: 0, z: 28.336092, w: -14.101969}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6072,8 +6072,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a1db175c3251b044905afc0025745e4, type: 2}
-  m_sharedMaterial: {fileID: -9001201174131459986, guid: 8a1db175c3251b044905afc0025745e4,
+  m_fontAsset: {fileID: 11400000, guid: f88691dedf3ce4a899980b3bf9e1e661, type: 2}
+  m_sharedMaterial: {fileID: 1741771794193855986, guid: f88691dedf3ce4a899980b3bf9e1e661,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6168,7 +6168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -9001201174131459986, guid: 8a1db175c3251b044905afc0025745e4, type: 2}
+  - {fileID: 1741771794193855986, guid: f88691dedf3ce4a899980b3bf9e1e661, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6705,7 +6705,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -56, y: -23}
+  m_AnchoredPosition: {x: -40, y: -60}
   m_SizeDelta: {x: 754.6678, y: 87.34752}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1353617599
@@ -7369,10 +7369,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PRESS <color=red>SPACE </color>TO ADVANCE TEXT
+  m_text: PRESS <color=#00F8FF>SPACE </color>TO ADVANCE TEXT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a1db175c3251b044905afc0025745e4, type: 2}
-  m_sharedMaterial: {fileID: -9001201174131459986, guid: 8a1db175c3251b044905afc0025745e4,
+  m_fontAsset: {fileID: 11400000, guid: f88691dedf3ce4a899980b3bf9e1e661, type: 2}
+  m_sharedMaterial: {fileID: 1741771794193855986, guid: f88691dedf3ce4a899980b3bf9e1e661,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -7397,8 +7397,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7433,7 +7433,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -9.116802, y: -0.44878387, z: -12.282551, w: -0.3908229}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7467,7 +7467,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -9001201174131459986, guid: 8a1db175c3251b044905afc0025745e4, type: 2}
+  - {fileID: 1741771794193855986, guid: f88691dedf3ce4a899980b3bf9e1e661, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

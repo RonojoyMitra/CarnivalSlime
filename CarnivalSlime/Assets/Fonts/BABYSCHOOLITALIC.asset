@@ -96,9 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: BABYSCHOOLITALIC
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -89884426
   material: {fileID: -9001201174131459986}
-  materialHashCode: 0
+  materialHashCode: -1229487978
   m_Version: 1.1.0
   m_SourceFontFileGUID: 7aa06b5f8332e874d8f1ffce453d26c7
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 7aa06b5f8332e874d8f1ffce453d26c7,

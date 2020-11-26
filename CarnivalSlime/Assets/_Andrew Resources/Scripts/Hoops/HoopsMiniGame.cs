@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class HoopsMiniGame : MonoBehaviour
 {
     public TextMeshPro audienceSentence; // top tmpro
-    public bool finishedMinigame;
+    public int finishedMinigame = 0;
 
     public KeyboardSystem Board;
 
@@ -47,8 +47,11 @@ public class HoopsMiniGame : MonoBehaviour
 
     public int phases;
 
+    public bool landed;
+
     void Start()
     {
+        landed = true;
         barnum.SetTrigger("Tap");
         // adjust difficulty based on this int (it'll be 0 for training, and 1,2,3,4,5 for the performance days
         day = GameManager.Instance.day;
@@ -75,9 +78,9 @@ public class HoopsMiniGame : MonoBehaviour
     void Update()
     {
 
-        if (!finishedMinigame)
+        if (finishedMinigame == 0)
         {
-            if (roundStage == 0)
+            if (roundStage == 0 && landed)
             {
                 //newPos = new Vector3(Marker.position.x, 0, Marker.position.z);
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))) // for each virtual key
@@ -113,7 +116,7 @@ public class HoopsMiniGame : MonoBehaviour
             else
             {
                 //newPos = new Vector3(Marker.position.x, 0, Marker.position.z);
-                if (Input.anyKeyDown)
+                if (Input.anyKeyDown && landed)
                 {
                     foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))) // for each virtual key
                     {
@@ -137,6 +140,7 @@ public class HoopsMiniGame : MonoBehaviour
                         slimeEffect.createHappy();
                         barnum.SetTrigger("Happy");
                         //Debug.Log("SUCCESS!!");
+                        GameManager.Instance.AddScore(Random.Range(1f, 1.5f));
                         gameSoundManager.Win();
                         float randomAudienceReaction = Random.Range(0f, 1f);
                         if (randomAudienceReaction <= 0.5f)
@@ -154,13 +158,14 @@ public class HoopsMiniGame : MonoBehaviour
                             }
                         }
                         GameObject.Find("Spot Light").GetComponent<Light>().color = Color.green;
-                        if (phase + 1 == phases && Vector3.Distance(Marker.gameObject.transform.position, Board.keySprites[stagingKey].transform.position) <= 1)
+                        /*if (phase + 1 == phases && Vector3.Distance(Marker.gameObject.transform.position, Board.keySprites[stagingKey].transform.position) <= 1.51)
                         {
-                            finishedMinigame = true;
-                        }
+                            finishedMinigame = 1;
+                        }*/
                     }
                     else
                     {
+                        GameManager.Instance.SubtractScore(Random.Range(1f, 2f));
                         slimeEffect.createSad();
                         barnum.SetTrigger("Angry");
                         //Debug.Log("FAILURE!!");
@@ -179,16 +184,27 @@ public class HoopsMiniGame : MonoBehaviour
                     phase++;
                     roundStage = 0;
                 }
+                if (jumping)
+                {
+                    jumping2 = true;
+                }
             }
 
-            if (jumping)
+            if (jumping2)
             {
+                landed = false;
+                jumping = false;
                 Debug.Log((initDist - Vector3.Distance(new Vector3(Marker.position.x, 0, Marker.position.z), newPos)) / initDist);
 
                 Slime.localPosition = new Vector3(0, -.84f + 5 * jump.Evaluate((initDist - Vector3.Distance(new Vector3(Marker.position.x, 0, Marker.position.z), newPos)) / initDist), 0);
-                if (Vector3.Distance(new Vector3(Marker.position.x, 0, Marker.position.z), newPos) < .01f)
+                if (Vector3.Distance(new Vector3(Marker.position.x, 0, Marker.position.z), newPos) < 0.1f)
                 {
-                    jumping = false;
+                    landed = true;
+                    jumping2 = false;
+                    if (phase == phases)
+                    {
+                        finishedMinigame = 1;
+                    }
                 }
             }
             else
@@ -196,19 +212,19 @@ public class HoopsMiniGame : MonoBehaviour
                 Slime.localPosition = new Vector3(0, -.84f, 0);
             }
 
-            if (phase == phases)
+            if (phase == phases && landed)
             {
                 audienceSentence.text = "You have successfully completed the minigame!";
                 if (Vector3.Distance(Marker.gameObject.transform.position, Board.keySprites[stagingKey].transform.position) <= 1.51)
                 {
-                    finishedMinigame = true;
+                    finishedMinigame = 1;
                 }
             }
             Marker.position = Vector3.Lerp(Marker.position, new Vector3(Board.keySprites[occupiedKey].transform.position.x, 1.5f, Board.keySprites[occupiedKey].transform.position.z), Time.deltaTime * 8);
             SlimeController();
             GameObject.Find("Spot Light").GetComponent<Light>().color = Color.Lerp(GameObject.Find("Spot Light").GetComponent<Light>().color, new Color(1, 0.7215686f, 0), Time.deltaTime * 15);
         }
-        else
+        else if (finishedMinigame == 1 && landed)
         {
                 Marker.position = Vector3.Lerp(Marker.position, new Vector3(Board.keySprites[occupiedKey].transform.position.x, 1.5f, Board.keySprites[occupiedKey].transform.position.z), Time.deltaTime * 8);
                 if (day != 0)
@@ -217,13 +233,15 @@ public class HoopsMiniGame : MonoBehaviour
                 }
                 loadNextScene = LoadScene();
                 StartCoroutine(loadNextScene);
+            finishedMinigame = 2;
         }
     }
 
     float yHeight;
     float initDist;
 
-    bool jumping;
+    public bool jumping;
+    public bool jumping2;
     Vector3 newPos;
 
     void SlimeController()

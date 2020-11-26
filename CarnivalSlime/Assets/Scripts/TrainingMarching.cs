@@ -153,7 +153,7 @@ public class TrainingMarching : MonoBehaviour
                 queueLetters.Add(stageBoard.alphabet[randoLetter]);
                 tracker = queueLetters.Count - 1;
             }
-            audienceSentence.text = "<color=red>" + stageBoard.alphabet[randoLetter] + "</color>";
+            audienceSentence.text = "<color=#00F8FF>" + stageBoard.alphabet[randoLetter] + "</color>";
             playerInput.text = "";
             slimeTracker = 0;
             phase = 2;

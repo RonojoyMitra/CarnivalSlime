@@ -168,7 +168,7 @@ public class IrregularTypingText : MonoBehaviour
             string frontSentence = sourceLine.Substring(3, wordIndex);
             boldWord = sourceLine.Substring(wordIndex + 3, letterCount);
             string backSentence = sourceLine.Substring(wordIndex + letterCount + 3);
-            audienceSentence.text = frontSentence + "<color=red>" + boldWord + "</color>" + backSentence; // I HAVE THE WORD AS RED, BUT THIS CAN BE CHANGED
+            audienceSentence.text = frontSentence + "<color=#00F8FF>" + boldWord + "</color>" + backSentence; // I HAVE THE WORD AS RED, BUT THIS CAN BE CHANGED
 
             if (leftToRight)
             {
