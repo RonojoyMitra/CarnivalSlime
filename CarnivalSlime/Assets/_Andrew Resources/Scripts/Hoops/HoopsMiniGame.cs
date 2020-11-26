@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class HoopsMiniGame : MonoBehaviour
 {
     public TextMeshPro audienceSentence; // top tmpro
+    public bool finishedMinigame;
 
     public KeyboardSystem Board;
 
@@ -37,7 +38,7 @@ public class HoopsMiniGame : MonoBehaviour
     public SlimeAnimationController slimeAnim;
     public Vector3 slimeForward;
 
-    public float phases;
+    public int phases;
 
     void Start()
     {
@@ -66,44 +67,11 @@ public class HoopsMiniGame : MonoBehaviour
     void Update()
     {
 
-
-        if (roundStage==0)
+        if (!finishedMinigame)
         {
-            //newPos = new Vector3(Marker.position.x, 0, Marker.position.z);
-            foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))) // for each virtual key
+            if (roundStage == 0)
             {
-                string inputString = vKey.ToString(); //convert to string
-                int inputID = Board.alphabet.IndexOf(inputString); // find string id (index on alphabet list)
-
-                if (inputID < Board.keyBools.Count && inputID >= 0) //if its a valid input (can be expanded upon)
-                {
-                    if (Input.GetKey(vKey)) //if this key is being pressed
-                    {
-
-                        if (Board.isKeyTangent(occupiedKey,inputID))
-                        {
-                            if (occupiedKey!=inputID)
-                            {
-                                gameSoundManager.Step();
-                                slimeForward = Board.keySprites[inputID].transform.position - Board.keySprites[occupiedKey].transform.position;
-                                slimeForward.Normalize();
-                            }
-                            Slime.localScale = new Vector3(0.36029f * 1.2f, 0.36029f * .3f, 0.36029f * 1.2f);
-                            occupiedKey = inputID;
-                        }
-
-                    }
-                }
-
-            }
-
-            if (occupiedKey == stagingKey) { GenerateDistance(); roundStage = 1; }
-        }
-        else
-        {
-            //newPos = new Vector3(Marker.position.x, 0, Marker.position.z);
-            if (Input.anyKeyDown)
-            {
+                //newPos = new Vector3(Marker.position.x, 0, Marker.position.z);
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))) // for each virtual key
                 {
                     string inputString = vKey.ToString(); //convert to string
@@ -114,14 +82,48 @@ public class HoopsMiniGame : MonoBehaviour
                         if (Input.GetKey(vKey)) //if this key is being pressed
                         {
 
-                            occupiedKey = inputID;
-                            newPos =  new Vector3(Board.keySprites[occupiedKey].transform.position.x, 0, Board.keySprites[occupiedKey].transform.position.z);
-                            initDist = Vector3.Distance(new Vector3(Marker.position.x, 0, Marker.position.z), newPos);
-                            jumping = true;
+                            if (Board.isKeyTangent(occupiedKey, inputID))
+                            {
+                                if (occupiedKey != inputID)
+                                {
+                                    gameSoundManager.Step();
+                                    slimeForward = Board.keySprites[inputID].transform.position - Board.keySprites[occupiedKey].transform.position;
+                                    slimeForward.Normalize();
+                                }
+                                Slime.localScale = new Vector3(0.36029f * 1.2f, 0.36029f * .3f, 0.36029f * 1.2f);
+                                occupiedKey = inputID;
+                            }
+
                         }
                     }
 
                 }
+
+                if (occupiedKey == stagingKey) { GenerateDistance(); roundStage = 1; }
+            }
+
+            else
+            {
+                //newPos = new Vector3(Marker.position.x, 0, Marker.position.z);
+                if (Input.anyKeyDown)
+                {
+                    foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))) // for each virtual key
+                    {
+                        string inputString = vKey.ToString(); //convert to string
+                        int inputID = Board.alphabet.IndexOf(inputString); // find string id (index on alphabet list)
+
+                        if (inputID < Board.keyBools.Count && inputID >= 0) //if its a valid input (can be expanded upon)
+                        {
+                            if (Input.GetKey(vKey)) //if this key is being pressed
+                            {
+                                occupiedKey = inputID;
+                                newPos = new Vector3(Board.keySprites[occupiedKey].transform.position.x, 0, Board.keySprites[occupiedKey].transform.position.z);
+                                initDist = Vector3.Distance(new Vector3(Marker.position.x, 0, Marker.position.z), newPos);
+                                jumping = true;
+                            }
+                        }
+
+                    }
                     if (Board.isKeyTangent(occupiedKey, targetKey))
                     {
                         //Debug.Log("SUCCESS!!");
@@ -140,9 +142,13 @@ public class HoopsMiniGame : MonoBehaviour
                             {
                                 soundManager.CrowdLaugh();
                             }
-                    }
-                        GameObject.Find("Spot Light").GetComponent<Light>().color = Color.green;
                         }
+                        GameObject.Find("Spot Light").GetComponent<Light>().color = Color.green;
+                        if (phase + 1 == phases && Vector3.Distance(Marker.gameObject.transform.position, Board.keySprites[stagingKey].transform.position) <= 1)
+                        {
+                            finishedMinigame = true;
+                        }
+                    }
                     else
                     {
                         //Debug.Log("FAILURE!!");
@@ -160,32 +166,46 @@ public class HoopsMiniGame : MonoBehaviour
                     GameObject.Find("DIST").GetComponent<TextMeshPro>().text = $"Go To Key {Board.alphabet[stagingKey]}";
                     phase++;
                     roundStage = 0;
-            } 
-        }
-        
-        if (jumping)
-        {
-            Debug.Log((initDist - Vector3.Distance(new Vector3(Marker.position.x, 0, Marker.position.z), newPos))/initDist);
-
-            Slime.localPosition = new Vector3(0, -.84f + 5*jump.Evaluate((initDist - Vector3.Distance(new Vector3(Marker.position.x, 0, Marker.position.z), newPos)) / initDist), 0);
-            if (Vector3.Distance(new Vector3(Marker.position.x, 0, Marker.position.z), newPos) < .01f)
-            {
-                jumping = false;
+                }
             }
+
+            if (jumping)
+            {
+                Debug.Log((initDist - Vector3.Distance(new Vector3(Marker.position.x, 0, Marker.position.z), newPos)) / initDist);
+
+                Slime.localPosition = new Vector3(0, -.84f + 5 * jump.Evaluate((initDist - Vector3.Distance(new Vector3(Marker.position.x, 0, Marker.position.z), newPos)) / initDist), 0);
+                if (Vector3.Distance(new Vector3(Marker.position.x, 0, Marker.position.z), newPos) < .01f)
+                {
+                    jumping = false;
+                }
+            }
+            else
+            {
+                Slime.localPosition = new Vector3(0, -.84f, 0);
+            }
+
+            if (phase == phases)
+            {
+                audienceSentence.text = "You have successfully completed the minigame!";
+                if (Vector3.Distance(Marker.gameObject.transform.position, Board.keySprites[stagingKey].transform.position) <= 1.51)
+                {
+                    finishedMinigame = true;
+                }
+            }
+            Marker.position = Vector3.Lerp(Marker.position, new Vector3(Board.keySprites[occupiedKey].transform.position.x, 1.5f, Board.keySprites[occupiedKey].transform.position.z), Time.deltaTime * 8);
+            SlimeController();
+            GameObject.Find("Spot Light").GetComponent<Light>().color = Color.Lerp(GameObject.Find("Spot Light").GetComponent<Light>().color, new Color(1, 0.7215686f, 0), Time.deltaTime * 15);
         }
         else
         {
-            Slime.localPosition = new Vector3(0, -.84f, 0);
+                Marker.position = Vector3.Lerp(Marker.position, new Vector3(Board.keySprites[occupiedKey].transform.position.x, 1.5f, Board.keySprites[occupiedKey].transform.position.z), Time.deltaTime * 8);
+                if (day != 0)
+                {
+                    soundManager.CrowdClapEnd();
+                }
+                loadNextScene = LoadScene();
+                StartCoroutine(loadNextScene);
         }
-
-        if (phase == phases)
-        {
-            loadNextScene = LoadScene();
-            StartCoroutine(loadNextScene);
-        }
-        Marker.position = Vector3.Lerp(Marker.position, new Vector3(Board.keySprites[occupiedKey].transform.position.x, 1.5f, Board.keySprites[occupiedKey].transform.position.z), Time.deltaTime * 8);
-        SlimeController();
-        GameObject.Find("Spot Light").GetComponent<Light>().color = Color.Lerp(GameObject.Find("Spot Light").GetComponent<Light>().color,new Color(1, 0.7215686f,0),Time.deltaTime * 15);
     }
 
     float yHeight;
@@ -219,7 +239,7 @@ public class HoopsMiniGame : MonoBehaviour
         dist = Mathf.Round(dist);
         dist -= 1;
         dist = Mathf.Clamp(dist,1,9);
-        audienceSentence.text = $"Go To Key {Board.alphabet[stagingKey]}";
+        audienceSentence.text = dist.ToString();
         GameObject.Find("DIST").GetComponent<TextMeshPro>().text = dist.ToString();
         //Debug.Log($"The distance between {Board.alphabet[occupiedKey]} and {Board.alphabet[targetKey]} is {dist}");
         Debug.Log($"The distance between {Board.alphabet[occupiedKey]} and ??? is {dist}");
