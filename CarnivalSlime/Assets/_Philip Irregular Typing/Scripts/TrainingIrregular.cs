@@ -15,6 +15,11 @@ public class TrainingIrregular : MonoBehaviour
 
     public Animator barnum;
 
+    public Animator curtainLeft1;
+    public Animator curtainLeft2;
+    public Animator curtainRight1;
+    public Animator curtainRight2;
+
     // tutorial exclusives
     public TextAsset textFile;
     public List<string> dialgueLines;
@@ -313,6 +318,10 @@ public class TrainingIrregular : MonoBehaviour
 
     private IEnumerator LoadScene()
     {
+        curtainLeft1.SetTrigger("Close");
+        curtainLeft2.SetTrigger("Close");
+        curtainRight1.SetTrigger("Close");
+        curtainRight2.SetTrigger("Close");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("TrainingMarching", LoadSceneMode.Single);
     }

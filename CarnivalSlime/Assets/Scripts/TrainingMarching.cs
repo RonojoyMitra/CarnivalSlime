@@ -16,6 +16,11 @@ public class TrainingMarching : MonoBehaviour
 
     public Animator barnum;
 
+    public Animator curtainLeft1;
+    public Animator curtainLeft2;
+    public Animator curtainRight1;
+    public Animator curtainRight2;
+
     public GameJuiceAudio gameSoundManager;
     public TimeAudio timeSoundManager;
     public TextScrollSoundManager textScrollSoundManager;
@@ -265,6 +270,10 @@ public class TrainingMarching : MonoBehaviour
 
     private IEnumerator LoadScene()
     {
+        curtainLeft1.SetTrigger("Close");
+        curtainLeft2.SetTrigger("Close");
+        curtainRight1.SetTrigger("Close");
+        curtainRight2.SetTrigger("Close");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("TrainingHoops", LoadSceneMode.Single);
     }

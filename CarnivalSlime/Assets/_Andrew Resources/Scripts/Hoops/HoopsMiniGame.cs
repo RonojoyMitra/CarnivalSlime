@@ -16,6 +16,11 @@ public class HoopsMiniGame : MonoBehaviour
 
     public Animator barnum;
 
+    public Animator curtainLeft1;
+    public Animator curtainLeft2;
+    public Animator curtainRight1;
+    public Animator curtainRight2;
+
     public int occupiedKey;
 
     public int stagingKey;
@@ -259,6 +264,10 @@ public class HoopsMiniGame : MonoBehaviour
     */
     private IEnumerator LoadScene()
     {
+        curtainLeft1.SetTrigger("Close");
+        curtainLeft2.SetTrigger("Close");
+        curtainRight1.SetTrigger("Close");
+        curtainRight2.SetTrigger("Close");
         if (day != 0)
         {
             soundManager.CrowdClapEnd();
