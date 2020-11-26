@@ -16,6 +16,8 @@ public class IrregularTypingText : MonoBehaviour
 
     public Animator barnum;
 
+    public CreateEffect slimeEffect;
+
     // starting (offscreen) positions for the slime at the beginning of the trick
     public Vector3 leftStartPosition;
     public Vector3 rightStartPosition;
@@ -201,6 +203,7 @@ public class IrregularTypingText : MonoBehaviour
                         // if the player enters an incorrect key
                         else
                         {
+                            slimeEffect.createSad();
                             barnum.SetTrigger("Angry");
                             gameSoundManager.Wrong();
                             if (!stun)
@@ -226,6 +229,7 @@ public class IrregularTypingText : MonoBehaviour
                 {
                     slime.assignPos(leftStartPosition);
                 }
+                slimeEffect.createHappy();
                 barnum.SetTrigger("Happy");
                 gameSoundManager.Win();
                 GameManager.Instance.AddScore(Random.Range(1f, 1.5f));

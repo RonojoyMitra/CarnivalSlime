@@ -2100,6 +2100,7 @@ MonoBehaviour:
   soundManager: {fileID: 358082728}
   gameSoundManager: {fileID: 938796098}
   barnum: {fileID: 1808530795}
+  slimeEffect: {fileID: 2008744026}
   leftStartPosition: {x: -13, y: 0, z: 1}
   rightStartPosition: {x: 13, y: 0, z: 1}
   slime: {fileID: 170666624}
@@ -8995,6 +8996,18 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 2008744023}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2008744026 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3679332740474164163, guid: 59a2519cabcc9f140a2b16eb1c8c2a94,
+    type: 3}
+  m_PrefabInstance: {fileID: 2008744023}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92e5624e04f4434aafb9366ffb86bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2033983798
 GameObject:
   m_ObjectHideFlags: 0

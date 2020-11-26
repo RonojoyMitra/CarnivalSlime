@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2058,6 +2058,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 534595045}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &534595047 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3679332740474164163, guid: 59a2519cabcc9f140a2b16eb1c8c2a94,
+    type: 3}
+  m_PrefabInstance: {fileID: 534595045}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92e5624e04f4434aafb9366ffb86bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &564848127
 GameObject:
   m_ObjectHideFlags: 0
@@ -6687,6 +6699,11 @@ MonoBehaviour:
   soundManager: {fileID: 1847892027}
   gameSoundManager: {fileID: 2099012431}
   barnum: {fileID: 1921448262}
+  slimeEffect: {fileID: 534595047}
+  curtainLeft1: {fileID: 0}
+  curtainLeft2: {fileID: 0}
+  curtainRight1: {fileID: 0}
+  curtainRight2: {fileID: 0}
   occupiedKey: 0
   stagingKey: 0
   stagingString: 

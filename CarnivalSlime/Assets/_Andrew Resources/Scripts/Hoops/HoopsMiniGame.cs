@@ -16,6 +16,8 @@ public class HoopsMiniGame : MonoBehaviour
 
     public Animator barnum;
 
+    public CreateEffect slimeEffect;
+
     public Animator curtainLeft1;
     public Animator curtainLeft2;
     public Animator curtainRight1;
@@ -134,6 +136,7 @@ public class HoopsMiniGame : MonoBehaviour
                     }
                     if (Board.isKeyTangent(occupiedKey, targetKey))
                     {
+                        slimeEffect.createHappy();
                         barnum.SetTrigger("Happy");
                         //Debug.Log("SUCCESS!!");
                         gameSoundManager.Win();
@@ -160,6 +163,7 @@ public class HoopsMiniGame : MonoBehaviour
                     }
                     else
                     {
+                        slimeEffect.createSad();
                         barnum.SetTrigger("Angry");
                         //Debug.Log("FAILURE!!");
                         gameSoundManager.Wrong();

@@ -16,6 +16,8 @@ public class MarchingMinigame : MonoBehaviour
 
     public Animator barnum;
 
+    public CreateEffect slimeEffect;
+
     public AudioController soundManager;
     public GameJuiceAudio gameSoundManager;
     public TimeAudio timeSoundManager;
@@ -227,6 +229,7 @@ public class MarchingMinigame : MonoBehaviour
             // if the player correctly types in all of the letters
             if (tracker == -1)
             {
+                slimeEffect.createHappy();
                 barnum.SetTrigger("Happy");
                 float randomAudienceReaction = Random.Range(0f, 1f);
                 if (randomAudienceReaction <= 0.5f)
@@ -290,6 +293,7 @@ public class MarchingMinigame : MonoBehaviour
                         // if the player enters an incorrect key
                         else
                         {
+                            slimeEffect.createSad();
                             barnum.SetTrigger("Angry");
                             gameSoundManager.Wrong();
                             GameManager.Instance.SubtractScore(Random.Range(0.25f, 1f));
