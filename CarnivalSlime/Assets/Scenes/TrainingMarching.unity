@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -351,18 +351,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32230108}
   m_CullTransparentMesh: 0
---- !u!95 &49910444 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3277015956415297017, guid: b37b091f6df13a14b8b787358dc556fa,
-    type: 3}
-  m_PrefabInstance: {fileID: 4358422252980428889}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &65787667 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 788816262347236385, guid: 0e2b4123bba11e84eaf573f9956200ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 4710667350054893159}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &66828480
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +551,18 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 105213886}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &105213889 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3679332740474164163, guid: 59a2519cabcc9f140a2b16eb1c8c2a94,
+    type: 3}
+  m_PrefabInstance: {fileID: 105213886}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92e5624e04f4434aafb9366ffb86bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &142070064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2554,10 +2554,9 @@ MonoBehaviour:
   stageBoard: {fileID: 564942207}
   timer: {fileID: 1591502569}
   barnum: {fileID: 471915211}
-  curtainLeft1: {fileID: 49910444}
-  curtainLeft2: {fileID: 1596221818}
-  curtainRight1: {fileID: 65787667}
-  curtainRight2: {fileID: 1077657243}
+  slimeEffect: {fileID: 105213889}
+  curtainLeft: {fileID: 4358422252980428890}
+  curtainRight: {fileID: 4710667350054893160}
   gameSoundManager: {fileID: 1866879541}
   timeSoundManager: {fileID: 280994796}
   textScrollSoundManager: {fileID: 545729833}
@@ -5528,12 +5527,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1077657243 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 788816263409454505, guid: 0e2b4123bba11e84eaf573f9956200ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 4710667350054893159}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1117965099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7854,12 +7847,6 @@ MonoBehaviour:
   timerLevelDisplay: 0
   timerDisplay: 0
   startTicking: 0
---- !u!95 &1596221818 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3277015955665210923, guid: b37b091f6df13a14b8b787358dc556fa,
-    type: 3}
-  m_PrefabInstance: {fileID: 4358422252980428889}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1598962554
 GameObject:
   m_ObjectHideFlags: 0
@@ -10719,6 +10706,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b37b091f6df13a14b8b787358dc556fa, type: 3}
+--- !u!95 &4358422252980428890 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4358422252712066099, guid: b37b091f6df13a14b8b787358dc556fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 4358422252980428889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4710667350054893159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10788,3 +10781,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e2b4123bba11e84eaf573f9956200ff, type: 3}
+--- !u!95 &4710667350054893160 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4710667350576388316, guid: 0e2b4123bba11e84eaf573f9956200ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 4710667350054893159}
+  m_PrefabAsset: {fileID: 0}

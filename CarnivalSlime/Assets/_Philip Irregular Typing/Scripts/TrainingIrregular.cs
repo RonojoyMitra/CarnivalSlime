@@ -15,10 +15,10 @@ public class TrainingIrregular : MonoBehaviour
 
     public Animator barnum;
 
-    public Animator curtainLeft1;
-    public Animator curtainLeft2;
-    public Animator curtainRight1;
-    public Animator curtainRight2;
+    public CreateEffect slimeEffect;
+
+    public Animator curtainLeft;
+    public Animator curtainRight;
 
     // tutorial exclusives
     public TextAsset textFile;
@@ -200,6 +200,7 @@ public class TrainingIrregular : MonoBehaviour
                         // if the player enters an incorrect key
                         else
                         {
+                            slimeEffect.createSad();
                             barnum.SetTrigger("Angry");
                             gameSoundManager.Wrong();
                             if (!stun)
@@ -227,6 +228,7 @@ public class TrainingIrregular : MonoBehaviour
                     slime.assignPos(leftStartPosition);
                     step.Squish();
                 }
+                slimeEffect.createHappy();
                 barnum.SetTrigger("Happy");
                 gameSoundManager.Win();
                 GameManager.Instance.AddScore(Random.Range(1f, 1.5f));
@@ -318,10 +320,8 @@ public class TrainingIrregular : MonoBehaviour
 
     private IEnumerator LoadScene()
     {
-        curtainLeft1.SetTrigger("Close");
-        curtainLeft2.SetTrigger("Close");
-        curtainRight1.SetTrigger("Close");
-        curtainRight2.SetTrigger("Close");
+        curtainLeft.SetTrigger("Close");
+        curtainRight.SetTrigger("Close");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("TrainingMarching", LoadSceneMode.Single);
     }

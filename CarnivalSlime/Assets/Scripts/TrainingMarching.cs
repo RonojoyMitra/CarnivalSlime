@@ -16,10 +16,10 @@ public class TrainingMarching : MonoBehaviour
 
     public Animator barnum;
 
-    public Animator curtainLeft1;
-    public Animator curtainLeft2;
-    public Animator curtainRight1;
-    public Animator curtainRight2;
+    public CreateEffect slimeEffect;
+
+    public Animator curtainLeft;
+    public Animator curtainRight;
 
     public GameJuiceAudio gameSoundManager;
     public TimeAudio timeSoundManager;
@@ -165,6 +165,7 @@ public class TrainingMarching : MonoBehaviour
             // if the player correctly types in all of the letters
             if (tracker == -1)
             {
+                slimeEffect.createHappy();
                 barnum.SetTrigger("Happy");
                 gameSoundManager.Win();
                 if (maxLengthLetters != numberOfSlimes)
@@ -218,6 +219,7 @@ public class TrainingMarching : MonoBehaviour
                         // if the player enters an incorrect key
                         else
                         {
+                            slimeEffect.createSad();
                             barnum.SetTrigger("Angry");
                             gameSoundManager.Wrong();
                             GameManager.Instance.SubtractScore(Random.Range(0.25f, 1f));
@@ -270,10 +272,8 @@ public class TrainingMarching : MonoBehaviour
 
     private IEnumerator LoadScene()
     {
-        curtainLeft1.SetTrigger("Close");
-        curtainLeft2.SetTrigger("Close");
-        curtainRight1.SetTrigger("Close");
-        curtainRight2.SetTrigger("Close");
+        curtainLeft.SetTrigger("Close");
+        curtainRight.SetTrigger("Close");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("TrainingHoops", LoadSceneMode.Single);
     }
