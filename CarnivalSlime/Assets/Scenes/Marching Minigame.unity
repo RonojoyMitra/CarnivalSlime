@@ -1452,6 +1452,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e2b4123bba11e84eaf573f9956200ff, type: 3}
+--- !u!95 &345228116 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4710667350576388316, guid: 0e2b4123bba11e84eaf573f9956200ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 345228115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &380766333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,6 +1877,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b37b091f6df13a14b8b787358dc556fa, type: 3}
+--- !u!95 &449076850 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4358422252712066099, guid: b37b091f6df13a14b8b787358dc556fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 449076849}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &464650757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,6 +2560,8 @@ MonoBehaviour:
   timer: {fileID: 1591502569}
   barnum: {fileID: 573904204}
   slimeEffect: {fileID: 693493754}
+  curtainLeft: {fileID: 449076850}
+  curtainRight: {fileID: 345228116}
   soundManager: {fileID: 519933304}
   gameSoundManager: {fileID: 109230066}
   timeSoundManager: {fileID: 638048351}

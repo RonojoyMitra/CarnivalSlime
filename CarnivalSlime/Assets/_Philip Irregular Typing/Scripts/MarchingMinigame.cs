@@ -18,6 +18,9 @@ public class MarchingMinigame : MonoBehaviour
 
     public CreateEffect slimeEffect;
 
+    public Animator curtainLeft;
+    public Animator curtainRight;
+
     public AudioController soundManager;
     public GameJuiceAudio gameSoundManager;
     public TimeAudio timeSoundManager;
@@ -361,6 +364,8 @@ public class MarchingMinigame : MonoBehaviour
 
     private IEnumerator LoadScene()
     {
+        curtainLeft.SetTrigger("Close");
+        curtainRight.SetTrigger("Close");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("Hoops Minigame", LoadSceneMode.Single);
     }

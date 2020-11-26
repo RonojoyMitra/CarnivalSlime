@@ -737,6 +737,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e2b4123bba11e84eaf573f9956200ff, type: 3}
+--- !u!95 &280985985 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4710667350576388316, guid: 0e2b4123bba11e84eaf573f9956200ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 280985984}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &318053472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,6 +1915,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b37b091f6df13a14b8b787358dc556fa, type: 3}
+--- !u!95 &523121582 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4358422252712066099, guid: b37b091f6df13a14b8b787358dc556fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 523121581}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &523174013
 GameObject:
   m_ObjectHideFlags: 0
@@ -6848,10 +6860,8 @@ MonoBehaviour:
   gameSoundManager: {fileID: 2099012431}
   barnum: {fileID: 1921448262}
   slimeEffect: {fileID: 534595047}
-  curtainLeft1: {fileID: 0}
-  curtainLeft2: {fileID: 0}
-  curtainRight1: {fileID: 0}
-  curtainRight2: {fileID: 0}
+  curtainLeft: {fileID: 523121582}
+  curtainRight: {fileID: 280985985}
   occupiedKey: 0
   stagingKey: 0
   stagingString: 

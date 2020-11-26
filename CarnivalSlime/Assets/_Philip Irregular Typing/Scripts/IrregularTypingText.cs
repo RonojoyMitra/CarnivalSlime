@@ -18,6 +18,9 @@ public class IrregularTypingText : MonoBehaviour
 
     public CreateEffect slimeEffect;
 
+    public Animator curtainLeft;
+    public Animator curtainRight;
+
     // starting (offscreen) positions for the slime at the beginning of the trick
     public Vector3 leftStartPosition;
     public Vector3 rightStartPosition;
@@ -356,6 +359,8 @@ public class IrregularTypingText : MonoBehaviour
 
     private IEnumerator LoadScene()
     {
+        curtainLeft.SetTrigger("Close");
+        curtainRight.SetTrigger("Close");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("Marching Minigame", LoadSceneMode.Single);
     }

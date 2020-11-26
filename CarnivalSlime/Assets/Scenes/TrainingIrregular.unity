@@ -1337,6 +1337,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e2b4123bba11e84eaf573f9956200ff, type: 3}
+--- !u!95 &359948250 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4710667350576388316, guid: 0e2b4123bba11e84eaf573f9956200ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 359948249}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &380766333
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,8 +2272,8 @@ MonoBehaviour:
   textScrollSoundManager: {fileID: 1372298049}
   barnum: {fileID: 1314338522}
   slimeEffect: {fileID: 1316223151}
-  curtainLeft: {fileID: 0}
-  curtainRight: {fileID: 0}
+  curtainLeft: {fileID: 608823482}
+  curtainRight: {fileID: 359948250}
   textFile: {fileID: 4900000, guid: 1ff059a0f07ad4af5a860d891d88896a, type: 3}
   dialgueLines: []
   currentLine: 0
@@ -2715,6 +2721,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b37b091f6df13a14b8b787358dc556fa, type: 3}
+--- !u!95 &608823482 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4358422252712066099, guid: b37b091f6df13a14b8b787358dc556fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 608823481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &616985942
 GameObject:
   m_ObjectHideFlags: 0
