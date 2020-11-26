@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class Cutscene2Manager : MonoBehaviour
 {
+    PlayableDirector director;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +16,16 @@ public class Cutscene2Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             SceneManager.LoadScene("Irregular Minigame", LoadSceneMode.Single);
             GameManager.Instance.day = 1;
         }
+    }
+
+    public void LoadMinigame()
+    {
+        SceneManager.LoadScene("Irregular Minigame", LoadSceneMode.Single);
+        GameManager.Instance.day = 1;
     }
 }

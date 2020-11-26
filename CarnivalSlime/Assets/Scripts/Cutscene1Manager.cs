@@ -19,4 +19,9 @@ public class Cutscene1Manager : MonoBehaviour
             SceneManager.LoadScene("TrainingIrregular", LoadSceneMode.Single);
         }
     }
+
+    public void LoadTutorial()
+    {
+        SceneManager.LoadScene("TrainingIrregular", LoadSceneMode.Single);
+    }
 }
