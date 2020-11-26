@@ -781,6 +781,115 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 210378270}
+--- !u!1001 &238419989
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2065377267478979559, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_Name
+      value: Barnum
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1088159
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0783
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065377267478979562, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0783
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38aac3f9b6267ea4b9449b996e7b36ea, type: 3}
+--- !u!1 &238419990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2065377267478979559, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 238419989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &238419991 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2065377267478979560, guid: 38aac3f9b6267ea4b9449b996e7b36ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 238419989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &238419992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238419990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076749560b5344efda109700aa7eea72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barnum: {fileID: 238419991}
 --- !u!1 &256398976
 GameObject:
   m_ObjectHideFlags: 0
@@ -7392,6 +7501,7 @@ MonoBehaviour:
   Board: {fileID: 1617115067}
   soundManager: {fileID: 0}
   gameSoundManager: {fileID: 282647045}
+  barnum: {fileID: 238419991}
   occupiedKey: 0
   stagingKey: 0
   stagingString: 

@@ -13,6 +13,8 @@ public class TrainingIrregular : MonoBehaviour
     public GameJuiceAudio gameSoundManager;
     public TextScrollSoundManager textScrollSoundManager;
 
+    public Animator barnum;
+
     // tutorial exclusives
     public TextAsset textFile;
     public List<string> dialgueLines;
@@ -134,6 +136,7 @@ public class TrainingIrregular : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && currentLine == endLine && cancelTyping && tutorialText.text == dialgueLines[currentLine])
             {
                 speechBubble.SetTrigger("Close");
+                barnum.SetTrigger("Tap");
                 phase = 1;
             }
             else if (Input.GetKeyDown(KeyCode.Space) && !cancelTyping)
@@ -192,6 +195,7 @@ public class TrainingIrregular : MonoBehaviour
                         // if the player enters an incorrect key
                         else
                         {
+                            barnum.SetTrigger("Angry");
                             gameSoundManager.Wrong();
                             if (!stun)
                             {
@@ -218,6 +222,7 @@ public class TrainingIrregular : MonoBehaviour
                     slime.assignPos(leftStartPosition);
                     step.Squish();
                 }
+                barnum.SetTrigger("Happy");
                 gameSoundManager.Win();
                 GameManager.Instance.AddScore(Random.Range(1f, 1.5f));
                 stun = false;

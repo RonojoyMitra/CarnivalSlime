@@ -14,6 +14,8 @@ public class TrainingMarching : MonoBehaviour
     public KeyboardSystem stageBoard;
     public MarchingTimeManagement timer;
 
+    public Animator barnum;
+
     public GameJuiceAudio gameSoundManager;
     public TimeAudio timeSoundManager;
     public TextScrollSoundManager textScrollSoundManager;
@@ -113,6 +115,7 @@ public class TrainingMarching : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space) && currentLine == endLine && cancelTyping && tutorialText.text == dialgueLines[currentLine])
             {
+                barnum.SetTrigger("Tap");
                 speechBubble.SetTrigger("Close");
                 countDownCoroutine = CountDown();
                 StartCoroutine(countDownCoroutine);
@@ -157,6 +160,7 @@ public class TrainingMarching : MonoBehaviour
             // if the player correctly types in all of the letters
             if (tracker == -1)
             {
+                barnum.SetTrigger("Happy");
                 gameSoundManager.Win();
                 if (maxLengthLetters != numberOfSlimes)
                 {
@@ -209,6 +213,7 @@ public class TrainingMarching : MonoBehaviour
                         // if the player enters an incorrect key
                         else
                         {
+                            barnum.SetTrigger("Angry");
                             gameSoundManager.Wrong();
                             GameManager.Instance.SubtractScore(Random.Range(0.25f, 1f));
                             GoBack();

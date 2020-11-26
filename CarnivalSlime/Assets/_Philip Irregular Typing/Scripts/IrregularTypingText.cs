@@ -14,6 +14,8 @@ public class IrregularTypingText : MonoBehaviour
     public AudioController soundManager;
     public GameJuiceAudio gameSoundManager;
 
+    public Animator barnum;
+
     // starting (offscreen) positions for the slime at the beginning of the trick
     public Vector3 leftStartPosition;
     public Vector3 rightStartPosition;
@@ -75,6 +77,7 @@ public class IrregularTypingText : MonoBehaviour
 
     void Start()
     {
+        barnum.SetTrigger("Tap");
         MusicManager.Instance.StopMusic();
         day = GameManager.Instance.day;
         randomLine = Random.Range(0, 12);
@@ -198,6 +201,7 @@ public class IrregularTypingText : MonoBehaviour
                         // if the player enters an incorrect key
                         else
                         {
+                            barnum.SetTrigger("Angry");
                             gameSoundManager.Wrong();
                             if (!stun)
                             {
@@ -222,6 +226,7 @@ public class IrregularTypingText : MonoBehaviour
                 {
                     slime.assignPos(leftStartPosition);
                 }
+                barnum.SetTrigger("Happy");
                 gameSoundManager.Win();
                 GameManager.Instance.AddScore(Random.Range(1f, 1.5f));
                 stun = false;

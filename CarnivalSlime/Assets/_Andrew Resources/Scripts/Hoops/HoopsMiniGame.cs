@@ -14,6 +14,8 @@ public class HoopsMiniGame : MonoBehaviour
     public AudioController soundManager;
     public GameJuiceAudio gameSoundManager;
 
+    public Animator barnum;
+
     public int occupiedKey;
 
     public int stagingKey;
@@ -42,6 +44,7 @@ public class HoopsMiniGame : MonoBehaviour
 
     void Start()
     {
+        barnum.SetTrigger("Tap");
         // adjust difficulty based on this int (it'll be 0 for training, and 1,2,3,4,5 for the performance days
         day = GameManager.Instance.day;
         if (day != 0)
@@ -126,6 +129,7 @@ public class HoopsMiniGame : MonoBehaviour
                     }
                     if (Board.isKeyTangent(occupiedKey, targetKey))
                     {
+                        barnum.SetTrigger("Happy");
                         //Debug.Log("SUCCESS!!");
                         gameSoundManager.Win();
                         float randomAudienceReaction = Random.Range(0f, 1f);
@@ -151,6 +155,7 @@ public class HoopsMiniGame : MonoBehaviour
                     }
                     else
                     {
+                        barnum.SetTrigger("Angry");
                         //Debug.Log("FAILURE!!");
                         gameSoundManager.Wrong();
                         if (day != 0)
