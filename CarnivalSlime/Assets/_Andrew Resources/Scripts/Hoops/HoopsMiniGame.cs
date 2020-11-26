@@ -275,7 +275,7 @@ public class HoopsMiniGame : MonoBehaviour
         yield return new WaitForSeconds(2f);
         if (day != 0)
         {
-            SceneManager.LoadScene("ScoreReview", LoadSceneMode.Single);
+            SceneManager.LoadScene("ReviewScene", LoadSceneMode.Single);
         }
         else
         {
