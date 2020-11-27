@@ -9,6 +9,7 @@ public class MusicManager : MonoBehaviour
     public AudioSource source;
 
     public AudioClip tutorial;
+    public AudioClip result;
 
     private void Awake()
     {
@@ -40,5 +41,11 @@ public class MusicManager : MonoBehaviour
     {
         source.Stop();
         source.clip = null;
+    }
+
+    public void Review()
+    {
+        source.clip = result;
+        source.Play();
     }
 }

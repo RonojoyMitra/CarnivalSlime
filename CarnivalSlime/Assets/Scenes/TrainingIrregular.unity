@@ -625,6 +625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 181865050}
   tutorial: {fileID: 8300000, guid: 5d172faf1ade64830bb58b7370418aed, type: 3}
+  result: {fileID: 8300000, guid: 1aed1933547b84c2aba31e78f80d923e, type: 3}
 --- !u!1 &198559184
 GameObject:
   m_ObjectHideFlags: 0

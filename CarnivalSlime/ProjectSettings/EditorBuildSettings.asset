@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScoreReview.unity
     guid: 3897f42b99d8548d7ad95e2d3d7ebfc7
+  - enabled: 1
+    path: Assets/Scenes/CreditScene.unity
+    guid: fab7603efd95e1a4f93dec7334ed6077
   m_configObjects: {}

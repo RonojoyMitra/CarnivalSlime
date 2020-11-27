@@ -179,7 +179,10 @@ public class HoopsMiniGame : MonoBehaviour
                     stagingKey = Random.Range(0, 26);
                     stagingString = Board.alphabet[stagingKey];
                     //Debug.Log($"Go To Key {Board.alphabet[stagingKey]}");
-                    audienceSentence.text = $"Go To Key {Board.alphabet[stagingKey]}";
+                    if (phase + 1 != phases)
+                    {
+                        audienceSentence.text = $"Go To Key {Board.alphabet[stagingKey]}";
+                    }
                     GameObject.Find("DIST").GetComponent<TextMeshPro>().text = $"Go To Key {Board.alphabet[stagingKey]}";
                     phase++;
                     roundStage = 0;

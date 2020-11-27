@@ -8,7 +8,10 @@ public class TransitionSceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (GameManager.Instance.day == 1)
+        {
+            MusicManager.Instance.Review();
+        }
     }
 
     // Update is called once per frame
@@ -17,6 +20,6 @@ public class TransitionSceneManager : MonoBehaviour
             if (Input.GetKey(KeyCode.E) && GameManager.Instance.day <= 5)
             {
                 SceneManager.LoadScene("Irregular Minigame", LoadSceneMode.Single);
-            }  
+            }
     }
 }

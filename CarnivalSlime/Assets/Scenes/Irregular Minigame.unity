@@ -4426,6 +4426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 956442816}
   tutorial: {fileID: 8300000, guid: 5d172faf1ade64830bb58b7370418aed, type: 3}
+  result: {fileID: 8300000, guid: 1aed1933547b84c2aba31e78f80d923e, type: 3}
 --- !u!82 &956442816
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5608,7 +5609,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.15}
+  m_AnchoredPosition: {x: 0, y: -2.87}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1240645507
@@ -6382,7 +6383,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493809680}
   m_LocalRotation: {x: -0.013859284, y: -0, z: -0, w: 0.999904}
-  m_LocalPosition: {x: 0, y: 0, z: 12}
+  m_LocalPosition: {x: 0, y: 0, z: 12.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1508348720}
@@ -6390,7 +6391,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -1.588, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 4.5}
+  m_AnchoredPosition: {x: 0, y: 1.88}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1493809682
@@ -6456,7 +6457,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
